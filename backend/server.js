@@ -29,6 +29,12 @@ const startServer = async () => {
     console.log('Successfully connected to MongoDB Atlas');
   } catch (err) {
     console.error('MongoDB Atlas Connection Failed:', err.message);
+    
+    if (process.env.NODE_ENV === 'production' || process.env.VERCEL) {
+      console.error('CRITICAL: MongoDB Atlas connection failed in production. Check Whitelisting (0.0.0.0/0) and Env Vars.');
+      return; 
+    }
+
     console.log('Falling back to In-Memory MongoDB for local development/audit...');
     
     try {
