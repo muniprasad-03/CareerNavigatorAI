@@ -1,0 +1,10 @@
+{
+    "python.defaultInterpreterPath": "d:\\Projects\\CareerNavigatorAI\\ai-service\\venv\\Scripts\\python.exe",
+    "python.analysis.extraPaths": [
+        "d:\\Projects\\CareerNavigatorAI\\ai-service"
+    ],
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.diagnosticMode": "workspace"
+}

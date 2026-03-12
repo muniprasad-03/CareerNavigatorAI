@@ -1,0 +1,2276 @@
+[
+  {
+    "riasecProfile": {
+      "R": 0.6,
+      "I": 0.9,
+      "A": 0.2,
+      "S": 0.1,
+      "E": 0.3,
+      "C": 0.4
+    },
+    "_id": "69b1be848a150cb215ac409c",
+    "name": "Software Engineer",
+    "description": "Designs and builds software applications.",
+    "skills": [
+      "Programming",
+      "System Design",
+      "Algorithms"
+    ],
+    "projects": [
+      "Task Management App",
+      "E-commerce Backend"
+    ],
+    "demandScore": 95,
+    "automationRisk": 20,
+    "roadmap": [
+      {
+        "step": "Core Fundamentals",
+        "duration": "3 Months",
+        "description": "Master Data Structures, Algorithms, and a primary language like Python or Java.",
+        "links": [
+          { "title": "CS50: Introduction to Computer Science", "url": "https://www.edx.org/course/introduction-computer-science-harvardx-cs50x", "type": "course" },
+          { "title": "Data Structures and Algorithms Specialization", "url": "https://www.coursera.org/specializations/data-structures-algorithms", "type": "course" }
+        ],
+        "_id": "69b1be848a150cb215ac409d"
+      },
+      {
+        "step": "Framework Specialization",
+        "duration": "6 Months",
+        "description": "Learn React/Next.js for frontend or Node.js/Go for backend development.",
+        "links": [
+          { "title": "React Official Documentation", "url": "https://react.dev/", "type": "other" },
+          { "title": "Full Stack Open", "url": "https://fullstackopen.com/en/", "type": "course" }
+        ],
+        "_id": "69b1be848a150cb215ac409e"
+      },
+      {
+        "step": "System Architecture",
+        "duration": "1 Year",
+        "description": "Study Distributed Systems, Cloud (AWS/Azure), and DevOps CI/CD pipelines.",
+        "links": [
+          { "title": "System Design Primer", "url": "https://github.com/donnemartin/system-design-primer", "type": "other" },
+          { "title": "AWS Certified Solutions Architect", "url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/", "type": "course" }
+        ],
+        "_id": "69b1be848a150cb215ac409f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.3,
+      "I": 0.9,
+      "A": 0.2,
+      "S": 0.1,
+      "E": 0.4,
+      "C": 0.7
+    },
+    "_id": "69b1be848a150cb215ac40a0",
+    "name": "Data Scientist",
+    "description": "Analyzes and intercepts complex digital data.",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Statistics"
+    ],
+    "projects": [
+      "House Price Prediction Model",
+      "Movie Recommender"
+    ],
+    "demandScore": 92,
+    "automationRisk": 15,
+    "roadmap": [
+      {
+        "step": "Mathematics & Stats",
+        "duration": "4 Months",
+        "description": "Deep dive into Linear Algebra, Calculus, and Probability Theory.",
+        "links": [
+          { "title": "Mathematics for Machine Learning", "url": "https://www.coursera.org/specializations/mathematics-machine-learning", "type": "course" },
+          { "title": "Khan Academy Statistics", "url": "https://www.khanacademy.org/math/statistics-probability", "type": "other" }
+        ],
+        "_id": "69b1be848a150cb215ac40a1"
+      },
+      {
+        "step": "ML Modeling",
+        "duration": "8 Months",
+        "description": "Implement Scikit-learn, TensorFlow, and Pytorch on real-world datasets.",
+        "links": [
+          { "title": "Machine Learning by Andrew Ng", "url": "https://www.coursera.org/learn/machine-learning", "type": "course" },
+          { "title": "Fast.ai: Practical Deep Learning for Coders", "url": "https://www.fast.ai/", "type": "course" }
+        ],
+        "_id": "69b1be848a150cb215ac40a2"
+      },
+      {
+        "step": "Big Data & Deployment",
+        "duration": "1 Year",
+        "description": "Learn Spark, Hadoop, and Model Deployment (MLOps).",
+        "links": [
+          { "title": "Made With ML", "url": "https://madewithml.com/", "type": "course" },
+          { "title": "MLOps Specialization", "url": "https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops", "type": "course" }
+        ],
+        "_id": "69b1be848a150cb215ac40a3"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.2,
+      "I": 0.3,
+      "A": 0.9,
+      "S": 0.4,
+      "E": 0.5,
+      "C": 0.2
+    },
+    "_id": "69b1be848a150cb215ac40a4",
+    "name": "Graphic Designer",
+    "description": "Creates visual concepts to communicate ideas that inspire.",
+    "skills": [
+      "Adobe Creative Suite",
+      "Typography",
+      "Color Theory"
+    ],
+    "projects": [
+      "Brand Identity Design",
+      "Website Mockups"
+    ],
+    "demandScore": 75,
+    "automationRisk": 40,
+    "roadmap": [
+      {
+        "step": "Design Theory",
+        "duration": "2 Months",
+        "description": "Learn Color Theory, Typography, and Visual Hierarchy.",
+        "_id": "69b1be848a150cb215ac40a5"
+      },
+      {
+        "step": "Tool Mastery",
+        "duration": "5 Months",
+        "description": "Become proficient in Adobe Illustrator, Photoshop, and Figma.",
+        "_id": "69b1be848a150cb215ac40a6"
+      },
+      {
+        "step": "Portfolio Build",
+        "duration": "8 Months",
+        "description": "Create real-world design projects for a professional portfolio.",
+        "_id": "69b1be848a150cb215ac40a7"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.4,
+      "I": 0.6,
+      "A": 0.1,
+      "S": 0.9,
+      "E": 0.2,
+      "C": 0.5
+    },
+    "_id": "69b1be848a150cb215ac40a8",
+    "name": "Registered Nurse",
+    "description": "Provides medical care and educates patients.",
+    "skills": [
+      "Patient Care",
+      "Anatomy",
+      "CPR"
+    ],
+    "projects": [
+      "Volunteer at Clinic",
+      "Health Awareness Campaign"
+    ],
+    "demandScore": 98,
+    "automationRisk": 5,
+    "roadmap": [
+      {
+        "step": "Prerequisites",
+        "duration": "1 Year",
+        "description": "Complete Anatomy, Physiology, and Microbiology courses.",
+        "_id": "69b1be848a150cb215ac40a9"
+      },
+      {
+        "step": "Nursing School",
+        "duration": "2-4 Years",
+        "description": "Attend an accredited nursing program (ADN or BSN).",
+        "_id": "69b1be848a150cb215ac40aa"
+      },
+      {
+        "step": "Licensure (NCLEX-RN)",
+        "duration": "3 Months",
+        "description": "Study for and pass the national licensure examination.",
+        "_id": "69b1be848a150cb215ac40ab"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.1,
+      "I": 0.2,
+      "A": 0.3,
+      "S": 0.8,
+      "E": 0.9,
+      "C": 0.6
+    },
+    "_id": "69b1be848a150cb215ac40ac",
+    "name": "Sales Manager",
+    "description": "Directs organizational sales teams.",
+    "skills": [
+      "Negotiation",
+      "Leadership",
+      "CRM Software"
+    ],
+    "projects": [
+      "Sales Strategy Plan",
+      "Lead Generation Campaign"
+    ],
+    "demandScore": 85,
+    "automationRisk": 30,
+    "roadmap": [
+      {
+        "step": "Business Development",
+        "duration": "1 Year",
+        "description": "Master lead generation and initial sales prospecting techniques.",
+        "_id": "69b1be848a150cb215ac40ad"
+      },
+      {
+        "step": "Relationship Management",
+        "duration": "2 Years",
+        "description": "Manage B2B accounts and learn complex negotiation strategies.",
+        "_id": "69b1be848a150cb215ac40ae"
+      },
+      {
+        "step": "Team Leadership",
+        "duration": "3 Years",
+        "description": "Transition into mentoring and managing high-performing sales teams.",
+        "_id": "69b1be848a150cb215ac40af"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.2,
+      "I": 0.5,
+      "A": 0.1,
+      "S": 0.3,
+      "E": 0.6,
+      "C": 0.9
+    },
+    "_id": "69b1be848a150cb215ac40b0",
+    "name": "Accountant",
+    "description": "Prepares and examines financial records.",
+    "skills": [
+      "Financial Reporting",
+      "Tax Laws",
+      "Excel"
+    ],
+    "projects": [
+      "Personal Budget Tracker",
+      "Mock Tax Return"
+    ],
+    "demandScore": 88,
+    "automationRisk": 55,
+    "roadmap": [
+      {
+        "step": "Basic Accounting",
+        "duration": "1 Year",
+        "description": "Learn Bookkeeping, GAAP standards, and Financial Statement prep.",
+        "_id": "69b1be848a150cb215ac40b1"
+      },
+      {
+        "step": "Auditing & Tax",
+        "duration": "2 Years",
+        "description": "Specialize in external audit procedures and local tax regulations.",
+        "_id": "69b1be848a150cb215ac40b2"
+      },
+      {
+        "step": "CPA Certification",
+        "duration": "3 Years",
+        "description": "Prepare for and complete the Uniform CPA Examination.",
+        "_id": "69b1be848a150cb215ac40b3"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.18053454358847765,
+      "I": 0.2878384347288798,
+      "A": 0.6935254140163843,
+      "S": 0.9543350992791212,
+      "E": 0.051547799709979136,
+      "C": 0.279817670058373
+    },
+    "_id": "69b1be848a150cb215ac40b4",
+    "name": "Mechanical Engineer",
+    "description": "Designs and builds software applications.",
+    "skills": [
+      "Programming",
+      "System Design",
+      "Algorithms"
+    ],
+    "projects": [
+      "Task Management App",
+      "E-commerce Backend"
+    ],
+    "demandScore": 95,
+    "automationRisk": 20,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40b5"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40b6"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40b7"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.9175729306702461,
+      "I": 0.9350400278830202,
+      "A": 0.6078731558033476,
+      "S": 0.26164307734947245,
+      "E": 0.2486852290151108,
+      "C": 0.6020709161888418
+    },
+    "_id": "69b1be848a150cb215ac40b8",
+    "name": "Civil Engineer",
+    "description": "Analyzes and intercepts complex digital data.",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Statistics"
+    ],
+    "projects": [
+      "House Price Prediction Model",
+      "Movie Recommender"
+    ],
+    "demandScore": 92,
+    "automationRisk": 15,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40b9"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40ba"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40bb"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.5041897467349561,
+      "I": 0.7438377912038693,
+      "A": 0.5176411550392991,
+      "S": 0.8645729905633505,
+      "E": 0.2762464431156981,
+      "C": 0.2621648129748425
+    },
+    "_id": "69b1be848a150cb215ac40bc",
+    "name": "Biologist",
+    "description": "Creates visual concepts to communicate ideas that inspire.",
+    "skills": [
+      "Adobe Creative Suite",
+      "Typography",
+      "Color Theory"
+    ],
+    "projects": [
+      "Brand Identity Design",
+      "Website Mockups"
+    ],
+    "demandScore": 75,
+    "automationRisk": 40,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40bd"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40be"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40bf"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.2936191924665068,
+      "I": 0.0932089238978413,
+      "A": 0.4519534331143156,
+      "S": 0.27692581831635754,
+      "E": 0.8450530679017125,
+      "C": 0.2266598514831324
+    },
+    "_id": "69b1be848a150cb215ac40c0",
+    "name": "Chemist",
+    "description": "Provides medical care and educates patients.",
+    "skills": [
+      "Patient Care",
+      "Anatomy",
+      "CPR"
+    ],
+    "projects": [
+      "Volunteer at Clinic",
+      "Health Awareness Campaign"
+    ],
+    "demandScore": 98,
+    "automationRisk": 5,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40c1"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40c2"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40c3"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.7788176709799329,
+      "I": 0.6571206251965773,
+      "A": 0.6122358980989908,
+      "S": 0.774015062793643,
+      "E": 0.8359032344947677,
+      "C": 0.6049552601876385
+    },
+    "_id": "69b1be848a150cb215ac40c4",
+    "name": "Teacher",
+    "description": "Directs organizational sales teams.",
+    "skills": [
+      "Negotiation",
+      "Leadership",
+      "CRM Software"
+    ],
+    "projects": [
+      "Sales Strategy Plan",
+      "Lead Generation Campaign"
+    ],
+    "demandScore": 85,
+    "automationRisk": 30,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40c5"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40c6"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40c7"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.36966861109457905,
+      "I": 0.12793885391915305,
+      "A": 0.27060356509988026,
+      "S": 0.1751249177942923,
+      "E": 0.8027259879417942,
+      "C": 0.7199966134399854
+    },
+    "_id": "69b1be848a150cb215ac40c8",
+    "name": "Counselor",
+    "description": "Prepares and examines financial records.",
+    "skills": [
+      "Financial Reporting",
+      "Tax Laws",
+      "Excel"
+    ],
+    "projects": [
+      "Personal Budget Tracker",
+      "Mock Tax Return"
+    ],
+    "demandScore": 88,
+    "automationRisk": 55,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40c9"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40ca"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40cb"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.9055240838762756,
+      "I": 0.682250850437509,
+      "A": 0.6917613709246214,
+      "S": 0.45573966722427306,
+      "E": 0.42868347838940724,
+      "C": 0.5958750851534665
+    },
+    "_id": "69b1be848a150cb215ac40cc",
+    "name": "Social Worker",
+    "description": "Designs and builds software applications.",
+    "skills": [
+      "Programming",
+      "System Design",
+      "Algorithms"
+    ],
+    "projects": [
+      "Task Management App",
+      "E-commerce Backend"
+    ],
+    "demandScore": 95,
+    "automationRisk": 20,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40cd"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40ce"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40cf"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.44479280938865806,
+      "I": 0.8795516530454724,
+      "A": 0.03919382160426055,
+      "S": 0.7214812429453734,
+      "E": 0.16751344145465774,
+      "C": 0.09112924571060244
+    },
+    "_id": "69b1be848a150cb215ac40d0",
+    "name": "Marketing Manager",
+    "description": "Analyzes and intercepts complex digital data.",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Statistics"
+    ],
+    "projects": [
+      "House Price Prediction Model",
+      "Movie Recommender"
+    ],
+    "demandScore": 92,
+    "automationRisk": 15,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40d1"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40d2"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40d3"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.02040496122079516,
+      "I": 0.10334992785704145,
+      "A": 0.9167160940734089,
+      "S": 0.7619582656025854,
+      "E": 0.9712359686394251,
+      "C": 0.6921530415378727
+    },
+    "_id": "69b1be848a150cb215ac40d4",
+    "name": "Entrepreneur",
+    "description": "Creates visual concepts to communicate ideas that inspire.",
+    "skills": [
+      "Adobe Creative Suite",
+      "Typography",
+      "Color Theory"
+    ],
+    "projects": [
+      "Brand Identity Design",
+      "Website Mockups"
+    ],
+    "demandScore": 75,
+    "automationRisk": 40,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40d5"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40d6"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40d7"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.777720160103096,
+      "I": 0.8192691391231959,
+      "A": 0.08991110401863411,
+      "S": 0.04265151002007561,
+      "E": 0.43967216339851023,
+      "C": 0.37880576896026485
+    },
+    "_id": "69b1be848a150cb215ac40d8",
+    "name": "Real Estate Agent",
+    "description": "Provides medical care and educates patients.",
+    "skills": [
+      "Patient Care",
+      "Anatomy",
+      "CPR"
+    ],
+    "projects": [
+      "Volunteer at Clinic",
+      "Health Awareness Campaign"
+    ],
+    "demandScore": 98,
+    "automationRisk": 5,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40d9"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40da"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40db"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.6599858666375961,
+      "I": 0.7687424480711047,
+      "A": 0.958523583295349,
+      "S": 0.13514808431705816,
+      "E": 0.1568497910227168,
+      "C": 0.18286980894996907
+    },
+    "_id": "69b1be848a150cb215ac40dc",
+    "name": "Financial Analyst",
+    "description": "Directs organizational sales teams.",
+    "skills": [
+      "Negotiation",
+      "Leadership",
+      "CRM Software"
+    ],
+    "projects": [
+      "Sales Strategy Plan",
+      "Lead Generation Campaign"
+    ],
+    "demandScore": 85,
+    "automationRisk": 30,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40dd"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40de"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40df"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.41111224134764657,
+      "I": 0.905940130363392,
+      "A": 0.8836256772630838,
+      "S": 0.8732244793015622,
+      "E": 0.0535489544483162,
+      "C": 0.05987129985636441
+    },
+    "_id": "69b1be848a150cb215ac40e0",
+    "name": "Actuary",
+    "description": "Prepares and examines financial records.",
+    "skills": [
+      "Financial Reporting",
+      "Tax Laws",
+      "Excel"
+    ],
+    "projects": [
+      "Personal Budget Tracker",
+      "Mock Tax Return"
+    ],
+    "demandScore": 88,
+    "automationRisk": 55,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40e1"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40e2"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40e3"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.786045288602688,
+      "I": 0.19155239657273715,
+      "A": 0.568143297573405,
+      "S": 0.8778966966888478,
+      "E": 0.45792532198288793,
+      "C": 0.4829388773776311
+    },
+    "_id": "69b1be848a150cb215ac40e4",
+    "name": "Architect",
+    "description": "Designs and builds software applications.",
+    "skills": [
+      "Programming",
+      "System Design",
+      "Algorithms"
+    ],
+    "projects": [
+      "Task Management App",
+      "E-commerce Backend"
+    ],
+    "demandScore": 95,
+    "automationRisk": 20,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40e5"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40e6"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40e7"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.03822553498747916,
+      "I": 0.4888132881790239,
+      "A": 0.7595367089875046,
+      "S": 0.5400394448415149,
+      "E": 0.7739767497760832,
+      "C": 0.06395642284046088
+    },
+    "_id": "69b1be848a150cb215ac40e8",
+    "name": "Interior Designer",
+    "description": "Analyzes and intercepts complex digital data.",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Statistics"
+    ],
+    "projects": [
+      "House Price Prediction Model",
+      "Movie Recommender"
+    ],
+    "demandScore": 92,
+    "automationRisk": 15,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40e9"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40ea"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40eb"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.535099550383209,
+      "I": 0.00432021623481138,
+      "A": 0.13835569217265342,
+      "S": 0.6088747650778724,
+      "E": 0.6897500791371434,
+      "C": 0.1661850222286525
+    },
+    "_id": "69b1be848a150cb215ac40ec",
+    "name": "Musician",
+    "description": "Creates visual concepts to communicate ideas that inspire.",
+    "skills": [
+      "Adobe Creative Suite",
+      "Typography",
+      "Color Theory"
+    ],
+    "projects": [
+      "Brand Identity Design",
+      "Website Mockups"
+    ],
+    "demandScore": 75,
+    "automationRisk": 40,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40ed"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40ee"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40ef"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.3082554139872594,
+      "I": 0.644292801885314,
+      "A": 0.4326195143400896,
+      "S": 0.11189280011805736,
+      "E": 0.588170635032429,
+      "C": 0.8492218643978616
+    },
+    "_id": "69b1be848a150cb215ac40f0",
+    "name": "Writer",
+    "description": "Provides medical care and educates patients.",
+    "skills": [
+      "Patient Care",
+      "Anatomy",
+      "CPR"
+    ],
+    "projects": [
+      "Volunteer at Clinic",
+      "Health Awareness Campaign"
+    ],
+    "demandScore": 98,
+    "automationRisk": 5,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40f1"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40f2"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40f3"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.04170790563826299,
+      "I": 0.35014397390594965,
+      "A": 0.34500515989972835,
+      "S": 0.183176062575368,
+      "E": 0.13295153749599598,
+      "C": 0.6345380165670337
+    },
+    "_id": "69b1be848a150cb215ac40f4",
+    "name": "Electrician",
+    "description": "Directs organizational sales teams.",
+    "skills": [
+      "Negotiation",
+      "Leadership",
+      "CRM Software"
+    ],
+    "projects": [
+      "Sales Strategy Plan",
+      "Lead Generation Campaign"
+    ],
+    "demandScore": 85,
+    "automationRisk": 30,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40f5"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40f6"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40f7"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.03364903149020604,
+      "I": 0.15640348331082687,
+      "A": 0.18354345039473885,
+      "S": 0.46459298585461206,
+      "E": 0.3491970307512908,
+      "C": 0.005938789833247582
+    },
+    "_id": "69b1be848a150cb215ac40f8",
+    "name": "Plumber",
+    "description": "Prepares and examines financial records.",
+    "skills": [
+      "Financial Reporting",
+      "Tax Laws",
+      "Excel"
+    ],
+    "projects": [
+      "Personal Budget Tracker",
+      "Mock Tax Return"
+    ],
+    "demandScore": 88,
+    "automationRisk": 55,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40f9"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40fa"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40fb"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.023406310523729545,
+      "I": 0.7252973009996682,
+      "A": 0.4012478417290768,
+      "S": 0.9233627558948514,
+      "E": 0.9403150651516259,
+      "C": 0.2835168038973024
+    },
+    "_id": "69b1be848a150cb215ac40fc",
+    "name": "Carpenter",
+    "description": "Designs and builds software applications.",
+    "skills": [
+      "Programming",
+      "System Design",
+      "Algorithms"
+    ],
+    "projects": [
+      "Task Management App",
+      "E-commerce Backend"
+    ],
+    "demandScore": 95,
+    "automationRisk": 20,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac40fd"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac40fe"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac40ff"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.4646492967730166,
+      "I": 0.5771816585438305,
+      "A": 0.11873006603134362,
+      "S": 0.5652077333471102,
+      "E": 0.23653670509804592,
+      "C": 0.5640168471143255
+    },
+    "_id": "69b1be848a150cb215ac4100",
+    "name": "Chef",
+    "description": "Analyzes and intercepts complex digital data.",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Statistics"
+    ],
+    "projects": [
+      "House Price Prediction Model",
+      "Movie Recommender"
+    ],
+    "demandScore": 92,
+    "automationRisk": 15,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4101"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4102"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4103"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.061416940457206914,
+      "I": 0.1304478341465204,
+      "A": 0.5846266427361269,
+      "S": 0.06172546511964494,
+      "E": 0.29027519382383504,
+      "C": 0.703798406608768
+    },
+    "_id": "69b1be848a150cb215ac4104",
+    "name": "Lawyer",
+    "description": "Creates visual concepts to communicate ideas that inspire.",
+    "skills": [
+      "Adobe Creative Suite",
+      "Typography",
+      "Color Theory"
+    ],
+    "projects": [
+      "Brand Identity Design",
+      "Website Mockups"
+    ],
+    "demandScore": 75,
+    "automationRisk": 40,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4105"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4106"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4107"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.024264212852434297,
+      "I": 0.2861694911401572,
+      "A": 0.6265541454980168,
+      "S": 0.22200403453195228,
+      "E": 0.7484882060311656,
+      "C": 0.35322724149767637
+    },
+    "_id": "69b1be848a150cb215ac4108",
+    "name": "Judge",
+    "description": "Provides medical care and educates patients.",
+    "skills": [
+      "Patient Care",
+      "Anatomy",
+      "CPR"
+    ],
+    "projects": [
+      "Volunteer at Clinic",
+      "Health Awareness Campaign"
+    ],
+    "demandScore": 98,
+    "automationRisk": 5,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4109"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac410a"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac410b"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.5930699641520077,
+      "I": 0.49586173301005054,
+      "A": 0.8384814558183495,
+      "S": 0.5680619744719412,
+      "E": 0.002406511149610324,
+      "C": 0.4090996949448563
+    },
+    "_id": "69b1be848a150cb215ac410c",
+    "name": "Paralegal",
+    "description": "Directs organizational sales teams.",
+    "skills": [
+      "Negotiation",
+      "Leadership",
+      "CRM Software"
+    ],
+    "projects": [
+      "Sales Strategy Plan",
+      "Lead Generation Campaign"
+    ],
+    "demandScore": 85,
+    "automationRisk": 30,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac410d"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac410e"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac410f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.12930039001838545,
+      "I": 0.945527044905694,
+      "A": 0.8366936469214774,
+      "S": 0.8062242168728524,
+      "E": 0.20348038350219333,
+      "C": 0.574388433932856
+    },
+    "_id": "69b1be848a150cb215ac4110",
+    "name": "Police Officer",
+    "description": "Prepares and examines financial records.",
+    "skills": [
+      "Financial Reporting",
+      "Tax Laws",
+      "Excel"
+    ],
+    "projects": [
+      "Personal Budget Tracker",
+      "Mock Tax Return"
+    ],
+    "demandScore": 88,
+    "automationRisk": 55,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4111"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4112"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4113"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.21201021287249944,
+      "I": 0.5170560037091227,
+      "A": 0.06346447865673377,
+      "S": 0.21318037944782342,
+      "E": 0.7381277803072693,
+      "C": 0.6042449552487973
+    },
+    "_id": "69b1be848a150cb215ac4114",
+    "name": "Firefighter",
+    "description": "Designs and builds software applications.",
+    "skills": [
+      "Programming",
+      "System Design",
+      "Algorithms"
+    ],
+    "projects": [
+      "Task Management App",
+      "E-commerce Backend"
+    ],
+    "demandScore": 95,
+    "automationRisk": 20,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4115"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4116"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4117"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.6630515530261007,
+      "I": 0.040663626733511093,
+      "A": 0.3327928739107151,
+      "S": 0.8044119564380665,
+      "E": 0.29655454457437136,
+      "C": 0.8997652979165403
+    },
+    "_id": "69b1be848a150cb215ac4118",
+    "name": "Paramedic",
+    "description": "Analyzes and intercepts complex digital data.",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Statistics"
+    ],
+    "projects": [
+      "House Price Prediction Model",
+      "Movie Recommender"
+    ],
+    "demandScore": 92,
+    "automationRisk": 15,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4119"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac411a"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac411b"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.12540144364154027,
+      "I": 0.02704569726733619,
+      "A": 0.3036823772273124,
+      "S": 0.6307045119604824,
+      "E": 0.22417877132881536,
+      "C": 0.4872145525519449
+    },
+    "_id": "69b1be848a150cb215ac411c",
+    "name": "Pharmacist",
+    "description": "Creates visual concepts to communicate ideas that inspire.",
+    "skills": [
+      "Adobe Creative Suite",
+      "Typography",
+      "Color Theory"
+    ],
+    "projects": [
+      "Brand Identity Design",
+      "Website Mockups"
+    ],
+    "demandScore": 75,
+    "automationRisk": 40,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac411d"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac411e"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac411f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.8819671441186461,
+      "I": 0.1940687507680916,
+      "A": 0.517404476213546,
+      "S": 0.584164276867252,
+      "E": 0.09526491612646826,
+      "C": 0.8052503186266203
+    },
+    "_id": "69b1be848a150cb215ac4120",
+    "name": "Dentist",
+    "description": "Provides medical care and educates patients.",
+    "skills": [
+      "Patient Care",
+      "Anatomy",
+      "CPR"
+    ],
+    "projects": [
+      "Volunteer at Clinic",
+      "Health Awareness Campaign"
+    ],
+    "demandScore": 98,
+    "automationRisk": 5,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4121"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4122"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4123"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.6520432758471727,
+      "I": 0.33484187603001425,
+      "A": 0.28097816776819895,
+      "S": 0.8236558141890076,
+      "E": 0.18766649311799488,
+      "C": 0.028776990970857175
+    },
+    "_id": "69b1be848a150cb215ac4124",
+    "name": "Physician",
+    "description": "Directs organizational sales teams.",
+    "skills": [
+      "Negotiation",
+      "Leadership",
+      "CRM Software"
+    ],
+    "projects": [
+      "Sales Strategy Plan",
+      "Lead Generation Campaign"
+    ],
+    "demandScore": 85,
+    "automationRisk": 30,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4125"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4126"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4127"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.6788569216706585,
+      "I": 0.6380212352404836,
+      "A": 0.153118748999987,
+      "S": 0.5504707137814819,
+      "E": 0.5477464384751283,
+      "C": 0.546723072949483
+    },
+    "_id": "69b1be848a150cb215ac4128",
+    "name": "Surgeon",
+    "description": "Prepares and examines financial records.",
+    "skills": [
+      "Financial Reporting",
+      "Tax Laws",
+      "Excel"
+    ],
+    "projects": [
+      "Personal Budget Tracker",
+      "Mock Tax Return"
+    ],
+    "demandScore": 88,
+    "automationRisk": 55,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4129"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac412a"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac412b"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.0291808846949565,
+      "I": 0.7119360243948104,
+      "A": 0.689940930181754,
+      "S": 0.3573162991808626,
+      "E": 0.09654652481888149,
+      "C": 0.2739136246114292
+    },
+    "_id": "69b1be848a150cb215ac412c",
+    "name": "Veterinarian",
+    "description": "Designs and builds software applications.",
+    "skills": [
+      "Programming",
+      "System Design",
+      "Algorithms"
+    ],
+    "projects": [
+      "Task Management App",
+      "E-commerce Backend"
+    ],
+    "demandScore": 95,
+    "automationRisk": 20,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac412d"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac412e"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac412f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.34875166785710576,
+      "I": 0.6329416918170435,
+      "A": 0.514204200788541,
+      "S": 0.048578402851768065,
+      "E": 0.3900092747546934,
+      "C": 0.21037531230091278
+    },
+    "_id": "69b1be848a150cb215ac4130",
+    "name": "Psychiatrist",
+    "description": "Analyzes and intercepts complex digital data.",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Statistics"
+    ],
+    "projects": [
+      "House Price Prediction Model",
+      "Movie Recommender"
+    ],
+    "demandScore": 92,
+    "automationRisk": 15,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4131"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4132"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4133"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.8925856506688271,
+      "I": 0.20343171307313712,
+      "A": 0.715479422239973,
+      "S": 0.5283112544613625,
+      "E": 0.6351462092973874,
+      "C": 0.6585131349053966
+    },
+    "_id": "69b1be848a150cb215ac4134",
+    "name": "Pilot",
+    "description": "Creates visual concepts to communicate ideas that inspire.",
+    "skills": [
+      "Adobe Creative Suite",
+      "Typography",
+      "Color Theory"
+    ],
+    "projects": [
+      "Brand Identity Design",
+      "Website Mockups"
+    ],
+    "demandScore": 75,
+    "automationRisk": 40,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4135"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4136"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4137"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.4445472339893818,
+      "I": 0.7511090156936818,
+      "A": 0.9081154288713728,
+      "S": 0.8141708338508047,
+      "E": 0.04471161374586852,
+      "C": 0.07609495911651387
+    },
+    "_id": "69b1be848a150cb215ac4138",
+    "name": "Air Traffic Controller",
+    "description": "Provides medical care and educates patients.",
+    "skills": [
+      "Patient Care",
+      "Anatomy",
+      "CPR"
+    ],
+    "projects": [
+      "Volunteer at Clinic",
+      "Health Awareness Campaign"
+    ],
+    "demandScore": 98,
+    "automationRisk": 5,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4139"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac413a"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac413b"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.14589539045419675,
+      "I": 0.45451548810644093,
+      "A": 0.8555277036533898,
+      "S": 0.7184796448398332,
+      "E": 0.2459357167099927,
+      "C": 0.8707387856904114
+    },
+    "_id": "69b1be848a150cb215ac413c",
+    "name": "Event Planner",
+    "description": "Directs organizational sales teams.",
+    "skills": [
+      "Negotiation",
+      "Leadership",
+      "CRM Software"
+    ],
+    "projects": [
+      "Sales Strategy Plan",
+      "Lead Generation Campaign"
+    ],
+    "demandScore": 85,
+    "automationRisk": 30,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac413d"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac413e"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac413f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.8510456354184175,
+      "I": 0.9353883155909317,
+      "A": 0.23764300834873242,
+      "S": 0.466206865840912,
+      "E": 0.46572974170940273,
+      "C": 0.755302876802962
+    },
+    "_id": "69b1be848a150cb215ac4140",
+    "name": "Public Relations Specialist",
+    "description": "Prepares and examines financial records.",
+    "skills": [
+      "Financial Reporting",
+      "Tax Laws",
+      "Excel"
+    ],
+    "projects": [
+      "Personal Budget Tracker",
+      "Mock Tax Return"
+    ],
+    "demandScore": 88,
+    "automationRisk": 55,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4141"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4142"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4143"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.963566571847881,
+      "I": 0.3529879365427896,
+      "A": 0.7088037848104279,
+      "S": 0.8572200780544195,
+      "E": 0.8804199171243599,
+      "C": 0.33779948038123997
+    },
+    "_id": "69b1be848a150cb215ac4144",
+    "name": "Web Developer",
+    "description": "Designs and builds software applications.",
+    "skills": [
+      "Programming",
+      "System Design",
+      "Algorithms"
+    ],
+    "projects": [
+      "Task Management App",
+      "E-commerce Backend"
+    ],
+    "demandScore": 95,
+    "automationRisk": 20,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4145"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4146"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4147"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.3939666542056697,
+      "I": 0.6338203628018638,
+      "A": 0.7545216119338386,
+      "S": 0.43809700911021243,
+      "E": 0.08826311286115629,
+      "C": 0.15033665334894897
+    },
+    "_id": "69b1be848a150cb215ac4148",
+    "name": "Database Administrator",
+    "description": "Analyzes and intercepts complex digital data.",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Statistics"
+    ],
+    "projects": [
+      "House Price Prediction Model",
+      "Movie Recommender"
+    ],
+    "demandScore": 92,
+    "automationRisk": 15,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4149"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac414a"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac414b"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.5131443383750907,
+      "I": 0.2217649956671609,
+      "A": 0.5154499078273739,
+      "S": 0.05241199878869629,
+      "E": 0.43715499409789205,
+      "C": 0.18220440119238945
+    },
+    "_id": "69b1be848a150cb215ac414c",
+    "name": "Network Engineer",
+    "description": "Creates visual concepts to communicate ideas that inspire.",
+    "skills": [
+      "Adobe Creative Suite",
+      "Typography",
+      "Color Theory"
+    ],
+    "projects": [
+      "Brand Identity Design",
+      "Website Mockups"
+    ],
+    "demandScore": 75,
+    "automationRisk": 40,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac414d"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac414e"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac414f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.08749489075058636,
+      "I": 0.3688463450785705,
+      "A": 0.7699871720240268,
+      "S": 0.533715853381185,
+      "E": 0.7162169194300546,
+      "C": 0.7179970183476532
+    },
+    "_id": "69b1be848a150cb215ac4150",
+    "name": "Cybersecurity Analyst",
+    "description": "Provides medical care and educates patients.",
+    "skills": [
+      "Patient Care",
+      "Anatomy",
+      "CPR"
+    ],
+    "projects": [
+      "Volunteer at Clinic",
+      "Health Awareness Campaign"
+    ],
+    "demandScore": 98,
+    "automationRisk": 5,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4151"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4152"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4153"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.8621913027887673,
+      "I": 0.4586761138012825,
+      "A": 0.8311334238790204,
+      "S": 0.9803880878389646,
+      "E": 0.7509903826274829,
+      "C": 0.7234457151679479
+    },
+    "_id": "69b1be848a150cb215ac4154",
+    "name": "UX/UI Designer",
+    "description": "Directs organizational sales teams.",
+    "skills": [
+      "Negotiation",
+      "Leadership",
+      "CRM Software"
+    ],
+    "projects": [
+      "Sales Strategy Plan",
+      "Lead Generation Campaign"
+    ],
+    "demandScore": 85,
+    "automationRisk": 30,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4155"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4156"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4157"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.835634073532639,
+      "I": 0.1330470213739019,
+      "A": 0.46443074989627486,
+      "S": 0.46533419368597384,
+      "E": 0.6011777632557094,
+      "C": 0.6458350771934579
+    },
+    "_id": "69b1be848a150cb215ac4158",
+    "name": "Animator",
+    "description": "Prepares and examines financial records.",
+    "skills": [
+      "Financial Reporting",
+      "Tax Laws",
+      "Excel"
+    ],
+    "projects": [
+      "Personal Budget Tracker",
+      "Mock Tax Return"
+    ],
+    "demandScore": 88,
+    "automationRisk": 55,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4159"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac415a"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac415b"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.08360411684533287,
+      "I": 0.06508560506936756,
+      "A": 0.9655272899593547,
+      "S": 0.713656890075732,
+      "E": 0.25132384806733155,
+      "C": 0.2893757507845981
+    },
+    "_id": "69b1be848a150cb215ac415c",
+    "name": "Video Game Designer",
+    "description": "Designs and builds software applications.",
+    "skills": [
+      "Programming",
+      "System Design",
+      "Algorithms"
+    ],
+    "projects": [
+      "Task Management App",
+      "E-commerce Backend"
+    ],
+    "demandScore": 95,
+    "automationRisk": 20,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac415d"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac415e"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac415f"
+      }
+    ],
+    "__v": 0
+  },
+  {
+    "riasecProfile": {
+      "R": 0.3547275441472705,
+      "I": 0.8820917536706947,
+      "A": 0.016591757129685414,
+      "S": 0.8411265847898338,
+      "E": 0.07992300722791212,
+      "C": 0.9736374888487378
+    },
+    "_id": "69b1be848a150cb215ac4160",
+    "name": "Photographer",
+    "description": "Analyzes and intercepts complex digital data.",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "Statistics"
+    ],
+    "projects": [
+      "House Price Prediction Model",
+      "Movie Recommender"
+    ],
+    "demandScore": 92,
+    "automationRisk": 15,
+    "roadmap": [
+      {
+        "step": "Initial Training",
+        "duration": "6 Months",
+        "description": "Foundational skill acquisition for the role.",
+        "_id": "69b1be848a150cb215ac4161"
+      },
+      {
+        "step": "Junior Practice",
+        "duration": "1 Year",
+        "description": "Hands-on experience in entry-level tasks.",
+        "_id": "69b1be848a150cb215ac4162"
+      },
+      {
+        "step": "Advanced Competency",
+        "duration": "2 Years",
+        "description": "Specialized mastery and optimization.",
+        "_id": "69b1be848a150cb215ac4163"
+      }
+    ],
+    "__v": 0
+  }
+]

@@ -1,0 +1,38 @@
+# General
+node_modules/
+.DS_Store
+*.log
+.env
+
+# Backend
+backend/node_modules/
+backend/db_storage/
+backend/.env
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.env.local
+
+# AI Service
+ai-service/venv/
+ai-service/__pycache__/
+ai-service/db_storage/
+
+# GSD & Internal Agent Artifacts
+.agent/
+.agents/
+.gsd/
+get-shit-done/
+gsd-template/
+adapters/
+docs/
+scripts/
+.gemini/
+.system_generated/
+GSD-STYLE.md
+PROJECT_RULES.md
+model_capabilities.yaml
+brain/
+project_full_export.md
+technical_report.md
