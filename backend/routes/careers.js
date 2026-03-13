@@ -39,10 +39,54 @@ router.post('/match', auth, async (req, res) => {
     const assessment = await Assessment.findOne({ userId: req.user.id }).sort({ createdAt: -1 });
     if (!assessment) return res.status(400).json({ msg: 'No assessment found' });
 
-    // Ensure we handle potentially older assessments gracefully
     const riasec = assessment.riasecScores || { R:0, I:0, A:0, S:0, E:0, C:0 };
     const narrative = req.body.narrative || "";
 
+    // -------------------------------------------------------------------------
+    // PRODUCTION DEMO MODE (Vercel Support)
+    // -------------------------------------------------------------------------
+    // If running on Vercel (or AI engine explicitly disabled), return a plausible mock
+    if (process.env.VERCEL || process.env.AI_DEMO_MODE === 'true') {
+        console.log("DEMO MODE ACTIVE: Providing Mock AI Matching for Vercel/Showcase");
+        
+        // Find a random career to "match"
+        const allCareers = await Career.find({});
+        if (allCareers.length === 0) return res.status(500).json({ msg: 'No careers in database to match.' });
+        
+        // Plausible logic: pick one that matches the highest RIASEC category
+        const sortedScores = Object.entries(riasec).sort((a,b) => b[1] - a[1]);
+        const topCode = sortedScores[0][0]; // E.g., 'R'
+        
+        const bestCareer = allCareers.find(c => c.riasecProfile && c.riasecProfile[topCode] > 0.5) || allCareers[Math.floor(Math.random() * allCareers.length)];
+
+        const recommendations = [{
+            careerId: bestCareer._id,
+            careerDetails: bestCareer,
+            matchScore: 85 + Math.floor(Math.random() * 10), // Plausible match score
+            rvi_automation_risk: 15 + Math.floor(Math.random() * 10),
+            explanation: `[DEMO MODE] Based on your strong ${topCode} orientation and your narrative, our EVA framework identifies ${bestCareer.name} as a high-alignment trajectory. This role leverages your specific competencies and optimizes for long-term skill stability.`
+        }];
+
+        // Save to DB so it persists for Dashboard/Favourites
+        const recRecord = new Recommendation({
+            userId: req.user.id,
+            careers: recommendations.map(r => ({
+                careerId: r.careerId,
+                matchScore: r.matchScore,
+                explanation: r.explanation
+            }))
+        });
+        await recRecord.save();
+
+        // Simulate a slight delay for realistic feel
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        return res.json(recommendations);
+    }
+
+    // -------------------------------------------------------------------------
+    // LOCAL LOGIC (Default: Python Inference)
+    // -------------------------------------------------------------------------
+    
     // 2. Prepare payload for Python 
     const payload = JSON.stringify({
         riasec,
@@ -50,7 +94,6 @@ router.post('/match', auth, async (req, res) => {
     });
 
     // 3. Spawn Python Script
-    // Determine absolute path to the virtual environment python and inference script
     const pyExe = path.join(__dirname, '../../ai-service/venv/Scripts/python.exe');
     const scriptPath = path.join(__dirname, '../../ai-service/inference.py');
 
@@ -59,17 +102,9 @@ router.post('/match', auth, async (req, res) => {
     let dataString = '';
     let errorString = '';
 
-    // Collect standard output
-    pythonProcess.stdout.on('data', (data) => {
-        dataString += data.toString();
-    });
+    pythonProcess.stdout.on('data', (f) => { dataString += f.toString(); });
+    pythonProcess.stderr.on('data', (f) => { errorString += f.toString(); });
 
-    // Collect standard error (for debugging)
-    pythonProcess.stderr.on('data', (data) => {
-        errorString += data.toString();
-    });
-
-    // Send payload to the script's waiting stdin
     pythonProcess.stdin.write(payload);
     pythonProcess.stdin.end();
 
@@ -80,56 +115,42 @@ router.post('/match', auth, async (req, res) => {
         }
 
         try {
-            // 4. Parse JSON Response
-            // Robust parsing: Find the first '{' and last '}' to handle potential warnings in stdout
             const jsonStart = dataString.indexOf('{');
             const jsonEnd = dataString.lastIndexOf('}');
             
-            let aiResult;
             if (jsonStart !== -1 && jsonEnd !== -1) {
                 const jsonStr = dataString.substring(jsonStart, jsonEnd + 1);
-                try {
-                    aiResult = JSON.parse(jsonStr);
-                } catch (parseErr) {
-                    console.error("Partial JSON parse failure:", parseErr);
-                    throw new Error("Invalid format from AI Engine");
+                const aiResult = JSON.parse(jsonStr);
+                
+                if (aiResult.status === 'error') {
+                   return res.status(500).json({ msg: 'AI Logic Error', details: aiResult.message });
                 }
+
+                const careerDetails = await Career.findById(aiResult.careerId);
+                const recommendations = [{
+                    careerId: aiResult.careerId,
+                    careerDetails,
+                    matchScore: aiResult.rvi_automation_risk,
+                    rvi_automation_risk: aiResult.rvi_automation_risk,
+                    explanation: aiResult.ai_explanation
+                }];
+
+                const recRecord = new Recommendation({
+                    userId: req.user.id,
+                    careers: recommendations.map(r => ({
+                        careerId: r.careerId,
+                        matchScore: r.matchScore,
+                        explanation: r.explanation
+                    }))
+                });
+                await recRecord.save();
+                res.json(recommendations);
             } else {
-                console.error("No JSON found in output:", dataString);
-                throw new Error("Empty response from AI Engine");
+                throw new Error("Invalid AI Engine Output");
             }
-            
-            if (aiResult.status === 'error') {
-                return res.status(500).json({ msg: 'AI Logic Error', details: aiResult.message });
-            }
-
-            const careerDetails = await Career.findById(aiResult.careerId);
-
-            const recommendations = [{
-                careerId: aiResult.careerId,
-                careerDetails,
-                matchScore: aiResult.rvi_automation_risk, // Re-using matchScore UI param temporarily
-                rvi_automation_risk: aiResult.rvi_automation_risk,
-                eva_shap_importances: aiResult.eva_shap_importances,
-                explanation: aiResult.ai_explanation
-            }];
-
-            // 5. Save to DB
-            const recRecord = new Recommendation({
-                userId: req.user.id,
-                careers: recommendations.map(r => ({
-                    careerId: r.careerId,
-                    matchScore: r.matchScore,
-                    explanation: r.explanation
-                }))
-            });
-            await recRecord.save();
-
-            res.json(recommendations);
         } catch (e) {
-            console.error("Failed to parse Python JSON:", dataString);
             console.error(e);
-            res.status(500).send('Server Parse Error');
+            res.status(500).send('Server Error');
         }
     });
 
