@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
     await user.save();
 
     const payload = { user: { id: user.id } };
-    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
+    jwt.sign(payload, process.env.JWT_SECRET || 'fallback_secret_for_showcase', { expiresIn: '5h' }, (err, token) => {
       if (err) throw err;
       res.json({ token, user: { id: user.id, name, email } });
     });
@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
     if (!isMatch) return res.status(400).json({ msg: 'Invalid Credentials' });
 
     const payload = { user: { id: user.id } };
-    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '5h' }, (err, token) => {
+    jwt.sign(payload, process.env.JWT_SECRET || 'fallback_secret_for_showcase', { expiresIn: '5h' }, (err, token) => {
       if (err) throw err;
       res.json({ token, user: { id: user.id, name: user.name, email: user.email } });
     });
