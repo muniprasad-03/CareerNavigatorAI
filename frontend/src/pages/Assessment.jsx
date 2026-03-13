@@ -72,8 +72,9 @@ const Assessment = () => {
       // 3. Success -> Go straight to recommendations
       navigate('/recommendations');
     } catch (err) {
-      console.error(err);
-      alert('AI Engine Timeout: The inference process took too long or failed. Please check your local server logs.');
+      console.error("Critical Assessment Failure:", err);
+      const errorMsg = err.response?.data?.msg || err.response?.data?.details || err.message;
+      alert(`AI Matcher Error: ${errorMsg} (Status: ${err.response?.status || 'Unknown'})`);
     } finally {
       setSubmissionLoading(false);
     }

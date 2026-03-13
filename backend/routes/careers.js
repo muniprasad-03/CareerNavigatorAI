@@ -49,38 +49,57 @@ router.post('/match', auth, async (req, res) => {
     if (process.env.VERCEL || process.env.AI_DEMO_MODE === 'true') {
         console.log("DEMO MODE ACTIVE: Providing Mock AI Matching for Vercel/Showcase");
         
-        // Find a random career to "match"
-        const allCareers = await Career.find({});
-        if (allCareers.length === 0) return res.status(500).json({ msg: 'No careers in database to match.' });
-        
-        // Plausible logic: pick one that matches the highest RIASEC category
-        const sortedScores = Object.entries(riasec).sort((a,b) => b[1] - a[1]);
-        const topCode = sortedScores[0][0]; // E.g., 'R'
-        
-        const bestCareer = allCareers.find(c => c.riasecProfile && c.riasecProfile[topCode] > 0.5) || allCareers[Math.floor(Math.random() * allCareers.length)];
+        try {
+            // Find a random career to "match"
+            const allCareers = await Career.find({}).limit(20);
+            
+            let bestCareer;
+            let topCode = 'I'; // Default
 
-        const recommendations = [{
-            careerId: bestCareer._id,
-            careerDetails: bestCareer,
-            matchScore: 85 + Math.floor(Math.random() * 10), // Plausible match score
-            rvi_automation_risk: 15 + Math.floor(Math.random() * 10),
-            explanation: `[DEMO MODE] Based on your strong ${topCode} orientation and your narrative, our EVA framework identifies ${bestCareer.name} as a high-alignment trajectory. This role leverages your specific competencies and optimizes for long-term skill stability.`
-        }];
+            if (allCareers.length > 0) {
+               // Plausible logic: pick one that matches the highest RIASEC category
+               const sortedScores = Object.entries(riasec).sort((a,b) => b[1] - a[1]);
+               topCode = sortedScores[0][0]; 
+               bestCareer = allCareers.find(c => c.riasecProfile && c.riasecProfile[topCode] > 0.5) || allCareers[0];
+            } else {
+               // TOTAL FALLBACK if DB is empty
+               bestCareer = {
+                  _id: "65f1e1e1e1e1e1e1e1e1e1e1", // Mock ID
+                  name: "AI Solutions Architect (Demo)",
+                  description: "Expert in designing scalable AI infrastructures."
+               };
+            }
 
-        // Save to DB so it persists for Dashboard/Favourites
-        const recRecord = new Recommendation({
-            userId: req.user.id,
-            careers: recommendations.map(r => ({
-                careerId: r.careerId,
-                matchScore: r.matchScore,
-                explanation: r.explanation
-            }))
-        });
-        await recRecord.save();
+            const recommendations = [{
+                careerId: bestCareer._id,
+                careerDetails: bestCareer,
+                matchScore: 92,
+                rvi_automation_risk: 12,
+                explanation: `[SHOWCASE MODE] Based on your high ${topCode} orientation, the EVA framework identifies ${bestCareer.name} as your optimal trajectory. This path leverages your analytical profile and provides a future-proof skill set.`
+            }];
 
-        // Simulate a slight delay for realistic feel
-        await new Promise(resolve => setTimeout(resolve, 3000));
-        return res.json(recommendations);
+            // Attempt to save to DB (don't block if it fails)
+            try {
+                const recRecord = new Recommendation({
+                    userId: req.user.id,
+                    careers: recommendations.map(r => ({
+                        careerId: r.careerId,
+                        matchScore: r.matchScore,
+                        explanation: r.explanation
+                    }))
+                });
+                await recRecord.save();
+            } catch (saveErr) {
+                console.warn("Could not save recommendation in Demo Mode:", saveErr.message);
+            }
+
+            // Simulate a slight delay for realistic feel
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            return res.json(recommendations);
+        } catch (demoErr) {
+            console.error("CRITICAL DEMO MODE FAILURE:", demoErr);
+            return res.status(500).json({ msg: 'Demo Matcher Failed', details: demoErr.message });
+        }
     }
 
     // -------------------------------------------------------------------------
