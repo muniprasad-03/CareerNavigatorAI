@@ -68,9 +68,26 @@ const Recommendations = () => {
                 <div className="pt-2 border-t border-gray-50 mt-auto">
                    <p className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-2">Primary Next Step:</p>
                    {rec.careerDetails?.roadmap && rec.careerDetails.roadmap[0] && (
-                     <div className="flex items-center space-x-2 text-xs text-blue-800 bg-blue-50 p-2 rounded border border-blue-100 mb-3">
-                        <span className="font-bold underline">Goal:</span>
-                        <span className="truncate">{rec.careerDetails.roadmap[0].step}</span>
+                     <div className="space-y-3 pb-3">
+                        <div className="flex items-center space-x-2 text-xs text-blue-800 bg-blue-50 p-2 rounded border border-blue-100">
+                           <span className="font-bold underline">Goal:</span>
+                           <span className="truncate">{rec.careerDetails.roadmap[0].step}</span>
+                        </div>
+                        {rec.careerDetails.roadmap[0].links && rec.careerDetails.roadmap[0].links.length > 0 && (
+                          <div className="flex flex-wrap gap-1">
+                            {rec.careerDetails.roadmap[0].links.slice(0, 2).map((link, i) => (
+                              <a 
+                                key={i} 
+                                href={link.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-[10px] bg-white border border-gray-200 px-2 py-0.5 rounded text-gray-500 hover:text-blue-600 transition"
+                              >
+                                🎓 {link.title}
+                              </a>
+                            ))}
+                          </div>
+                        )}
                      </div>
                    )}
                    <button 

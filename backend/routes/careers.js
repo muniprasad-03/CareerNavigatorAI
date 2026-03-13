@@ -139,6 +139,34 @@ router.post('/match', auth, async (req, res) => {
   }
 });
 
+// -----------------------------------------------------------------------------
+// GET SAVED CAREERS (Must be above /:id)
+// -----------------------------------------------------------------------------
+router.get('/saved', auth, async (req, res) => {
+    try {
+        console.log("Fetching saved careers for user:", req.user.id);
+        const saved = await SavedCareer.find({ userId: req.user.id }).populate('careerId');
+        
+        if (!saved) {
+           console.log("No saved records found for user");
+           return res.json([]);
+        }
+
+        const validCareers = saved
+            .map(s => s.careerId)
+            .filter(c => c !== null);
+            
+        console.log(`Found ${validCareers.length} valid saved careers`);
+        res.json(validCareers);
+    } catch (err) {
+        console.error("GET /api/careers/saved CRITICAL ERROR:", err);
+        res.status(500).json({ msg: 'Server Error', details: err.message });
+    }
+});
+
+// -----------------------------------------------------------------------------
+// GET ONE CAREER
+// -----------------------------------------------------------------------------
 router.get('/:id', auth, async (req, res) => {
    try {
      const career = await Career.findById(req.params.id);
@@ -182,15 +210,5 @@ router.delete('/:id/save', auth, async (req, res) => {
     }
 });
 
-// Get user's saved careers
-router.get('/saved', auth, async (req, res) => {
-    try {
-        const saved = await SavedCareer.find({ userId: req.user.id }).populate('careerId');
-        res.json(saved.map(s => s.careerId).filter(c => c !== null));
-    } catch (err) {
-        console.error("GET /api/careers/saved ERROR:", err);
-        res.status(500).send('Server Error');
-    }
-});
 
 module.exports = router;

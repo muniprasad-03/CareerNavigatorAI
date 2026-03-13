@@ -7,6 +7,7 @@ import Assessment from './pages/Assessment';
 import Dashboard from './pages/Dashboard';
 import CareerDetail from './pages/CareerDetail';
 import Recommendations from './pages/Recommendations';
+import Favourites from './pages/Favourites';
 import { setAuthToken } from './api';
 
 if (localStorage.getItem('token')) {
@@ -26,7 +27,13 @@ function App() {
                 <Link to="/register" className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">Register</Link>
               </>
             ) : (
-              <button onClick={() => { localStorage.removeItem('token'); window.location.href='/'; }} className="text-gray-600 hover:text-red-600">Logout</button>
+              <div className="flex items-center space-x-4">
+                <Link to="/dashboard" className="text-gray-600 hover:text-blue-600">Dashboard</Link>
+                <Link to="/favourites" className="text-gray-600 hover:text-blue-600 font-semibold flex items-center">
+                   <span className="mr-1">⭐</span> Favourites
+                </Link>
+                <button onClick={() => { localStorage.removeItem('token'); window.location.href='/'; }} className="text-gray-600 hover:text-red-600 ml-4">Logout</button>
+              </div>
             )}
           </div>
         </nav>
@@ -38,6 +45,7 @@ function App() {
             <Route path="/assessment" element={<Assessment />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/recommendations" element={<Recommendations />} />
+            <Route path="/favourites" element={<Favourites />} />
             <Route path="/career/:id" element={<CareerDetail />} />
           </Routes>
         </main>

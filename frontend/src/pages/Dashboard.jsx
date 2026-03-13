@@ -23,7 +23,7 @@ const Dashboard = () => {
         setSavedCareers(savedRes.data);
       } catch (err) {
         if (err.response && err.response.status === 404 && err.config.url.includes('/assessment/latest')) {
-           navigate('/assessment'); 
+           console.log("No assessment yet");
         }
         console.error("Dashboard fetch error:", err);
       } finally {
@@ -88,7 +88,15 @@ const Dashboard = () => {
 
       {savedCareers.length > 0 && (
         <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100">
-           <h3 className="text-2xl font-bold text-gray-800 mb-6">Your Saved Careers</h3>
+           <div className="flex justify-between items-center mb-6">
+             <h3 className="text-2xl font-bold text-gray-800">Your Saved Careers</h3>
+             <button 
+               onClick={() => navigate('/favourites')}
+               className="text-blue-600 hover:underline font-bold text-sm"
+             >
+               View All Favourites &rarr;
+             </button>
+           </div>
            <div className="grid gap-4 md:grid-cols-2">
               {savedCareers.map(career => (
                 <div 
