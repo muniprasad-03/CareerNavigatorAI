@@ -25,7 +25,6 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       console.warn("Unauthorized! Clearing token and redirecting...");
       localStorage.removeItem('token');
-      // Only redirect if we're not already on the login page to avoid loops
       if (!window.location.pathname.includes('/login')) {
          window.location.href = '/login?expired=true';
       }
@@ -33,14 +32,6 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
-export const setAuthToken = token => {
-  if (token) {
-    api.defaults.headers.common['x-auth-token'] = token;
-  } else {
-    delete api.defaults.headers.common['x-auth-token'];
-  }
-};
 
 export const saveCareer = (id) => api.post(`/careers/${id}/save`);
 export const unsaveCareer = (id) => api.delete(`/careers/${id}/save`);

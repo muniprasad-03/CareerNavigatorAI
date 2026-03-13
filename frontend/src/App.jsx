@@ -8,11 +8,8 @@ import Dashboard from './pages/Dashboard';
 import CareerDetail from './pages/CareerDetail';
 import Recommendations from './pages/Recommendations';
 import Favourites from './pages/Favourites';
-import { setAuthToken } from './api';
-
-if (localStorage.getItem('token')) {
-  setAuthToken(localStorage.getItem('token'));
-}
+import Recommendations from './pages/Recommendations';
+import Favourites from './pages/Favourites';
 
 function App() {
   return (

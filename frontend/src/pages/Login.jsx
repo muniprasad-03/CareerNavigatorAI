@@ -11,7 +11,6 @@ const Login = () => {
     try {
       const res = await api.post('/auth/login', formData);
       localStorage.setItem('token', res.data.token);
-      setAuthToken(res.data.token);
       navigate('/dashboard');
       window.location.reload(); // Quick refresh to update nav state
     } catch (err) {

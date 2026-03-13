@@ -11,7 +11,6 @@ const Register = () => {
     try {
       const res = await api.post('/auth/register', formData);
       localStorage.setItem('token', res.data.token);
-      setAuthToken(res.data.token);
       navigate('/dashboard');
       window.location.reload();
     } catch (err) {
