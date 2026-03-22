@@ -8,8 +8,6 @@ import Dashboard from './pages/Dashboard';
 import CareerDetail from './pages/CareerDetail';
 import Recommendations from './pages/Recommendations';
 import Favourites from './pages/Favourites';
-import Recommendations from './pages/Recommendations';
-import Favourites from './pages/Favourites';
 
 function App() {
   return (

@@ -35,11 +35,7 @@ router.get('/recommendations', auth, async (req, res) => {
 
 router.post('/match', auth, async (req, res) => {
   try {
-    // 1. Get user's latest assessment
-    const assessment = await Assessment.findOne({ userId: req.user.id }).sort({ createdAt: -1 });
-    if (!assessment) return res.status(400).json({ msg: 'No assessment found' });
-
-    const riasec = assessment.riasecScores || { R:0, I:0, A:0, S:0, E:0, C:0 };
+    const riasec = req.body.riasec_scores || { R:0, I:0, A:0, S:0, E:0, C:0 };
     const narrative = req.body.narrative || "";
 
     // -------------------------------------------------------------------------
@@ -103,75 +99,66 @@ router.post('/match', auth, async (req, res) => {
     }
 
     // -------------------------------------------------------------------------
-    // LOCAL LOGIC (Default: Python Inference)
+    // DUAL AI INFERENCE LOGIC (HTTP)
     // -------------------------------------------------------------------------
     
-    // 2. Prepare payload for Python 
-    const payload = JSON.stringify({
-        riasec,
-        narrative
-    });
+    const payload = {
+        riasec_scores: riasec,
+        narrative,
+        north_star: req.body.north_star || ""
+    };
 
-    // 3. Spawn Python Script
-    const pyExe = path.join(__dirname, '../../ai-service/venv/Scripts/python.exe');
-    const scriptPath = path.join(__dirname, '../../ai-service/inference.py');
+    const aiEndpointUrl = process.env.AI_ENDPOINT_URL || 'http://localhost:8000/match';
+    console.log('[careers] Forwarding to AI endpoint:', aiEndpointUrl);
 
-    const pythonProcess = spawn(pyExe, [scriptPath]);
-
-    let dataString = '';
-    let errorString = '';
-
-    pythonProcess.stdout.on('data', (f) => { dataString += f.toString(); });
-    pythonProcess.stderr.on('data', (f) => { errorString += f.toString(); });
-
-    pythonProcess.stdin.write(payload);
-    pythonProcess.stdin.end();
-
-    pythonProcess.on('close', async (code) => {
-        if (code !== 0) {
-            console.error('Python Error:', errorString);
-            return res.status(500).json({ msg: 'AI Engine failed processing.', details: errorString });
+    const axios = require('axios');
+    let response;
+    try {
+        response = await axios.post(aiEndpointUrl, payload, { timeout: 15000 });
+    } catch (apiErr) {
+        if (apiErr.code === 'ECONNABORTED' || apiErr.code === 'ECONNREFUSED' || !apiErr.response) {
+             return res.status(503).json({ 
+                 error: "AI service unavailable", 
+                 detail: "Could not reach the inference engine. Is it running?" 
+             });
+        } else if (apiErr.response && apiErr.response.status === 500) {
+             return res.status(502).json({
+                 error: "AI service internal error",
+                 detail: apiErr.response.data
+             });
         }
+        return res.status(500).json({ error: "AI Engine error", detail: apiErr.message });
+    }
 
-        try {
-            const jsonStart = dataString.indexOf('{');
-            const jsonEnd = dataString.lastIndexOf('}');
-            
-            if (jsonStart !== -1 && jsonEnd !== -1) {
-                const jsonStr = dataString.substring(jsonStart, jsonEnd + 1);
-                const aiResult = JSON.parse(jsonStr);
-                
-                if (aiResult.status === 'error') {
-                   return res.status(500).json({ msg: 'AI Logic Error', details: aiResult.message });
+    const aiResult = response.data;
+    
+    // Save to database
+    try {
+        if (aiResult.top_careers && aiResult.top_careers.length > 0) {
+            const savedCareers = [];
+            for (const tc of aiResult.top_careers) {
+                const careerDoc = await Career.findOne({ name: tc.title });
+                if (careerDoc) {
+                    savedCareers.push({
+                        careerId: careerDoc._id,
+                        matchScore: tc.score,
+                        explanation: tc.justification
+                    });
                 }
-
-                const careerDetails = await Career.findById(aiResult.careerId);
-                const recommendations = [{
-                    careerId: aiResult.careerId,
-                    careerDetails,
-                    matchScore: aiResult.rvi_automation_risk,
-                    rvi_automation_risk: aiResult.rvi_automation_risk,
-                    explanation: aiResult.ai_explanation
-                }];
-
+            }
+            if (savedCareers.length > 0) {
                 const recRecord = new Recommendation({
                     userId: req.user.id,
-                    careers: recommendations.map(r => ({
-                        careerId: r.careerId,
-                        matchScore: r.matchScore,
-                        explanation: r.explanation
-                    }))
+                    careers: savedCareers
                 });
                 await recRecord.save();
-                res.json(recommendations);
-            } else {
-                throw new Error("Invalid AI Engine Output");
             }
-        } catch (e) {
-            console.error(e);
-            res.status(500).send('Server Error');
         }
-    });
+    } catch (saveErr) {
+        console.warn('Could not save recommendation to DB:', saveErr.message);
+    }
+
+    return res.json(aiResult);
 
   } catch (err) {
     console.error(err.message);

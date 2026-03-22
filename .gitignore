@@ -36,3 +36,7 @@ model_capabilities.yaml
 brain/
 project_full_export.md
 technical_report.md
+py_out.txt
+smoke_test_out.txt
+lint_results.txt
+workflows/

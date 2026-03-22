@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import api, { setAuthToken } from '../api';
+import api from '../api';
 
 const Register = () => {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });

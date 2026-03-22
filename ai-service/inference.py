@@ -1,170 +1,138 @@
-import warnings
-import urllib3
-import os
-import sys
-
-# Suppress verbose warnings to keep stdout clean for JSON parsing in Node.js
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress TensorFlow/Models messages
-warnings.filterwarnings('ignore')
-urllib3.disable_warnings()
-
-import json
-import math
+# File: ai-service/inference.py | Purpose: Local AI Microservice for Semantic Matching and LLM Explanation
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+from typing import Dict, Optional
+import numpy as np
 import requests
 import chromadb
 from sentence_transformers import SentenceTransformer
+import os
 
-def normalize_riasec(riasec_dict):
-    r"""Trait Normalization algorithm ($w_i = s_i / \sum s_j$)"""
-    total = sum(riasec_dict.values())
-    if total == 0:
-        return {k: 0 for k in riasec_dict}
-    return {k: round(v / total, 3) for k, v in riasec_dict.items()}
+app = FastAPI()
 
-def calculate_rvi(riasec_dict):
-    """
-    Resilience-Volatility Index (RVI).
-    Routine/Predictable work (Conventional, Realistic) has higher automation risk.
-    Social/Investigative (Creative, Empathic) has lower risk.
-    Returns a score from 0.0 (Safe) to 1.0 (High Risk).
-    """
-    # Weights for automation risk based on O*NET projections (Mocked for Zero-Cost Prototype)
-    risk_weights = {
-        "C": 0.8, # Conventional - High Risk (Routine data)
-        "R": 0.7, # Realistic - Med/High Risk (Physical routine)
-        "E": 0.5, # Enterprising - Medium
-        "A": 0.3, # Artistic - Low Risk (Creative)
-        "I": 0.2, # Investigative - Low Risk (Complex problem solving)
-        "S": 0.1  # Social - Very Low Risk (Human interaction)
-    }
-    
-    rvi = 0.0
-    for trait, score in riasec_dict.items():
-        rvi += score * risk_weights.get(trait, 0)
-        
-    return round(rvi, 2)
+# Load model at module level
+model = SentenceTransformer('all-MiniLM-L6-v2')
 
-def generate_shap_values(user_riasec, career_riasec):
-    """
-    Mocks a SHAP feature importance array for the local prototype.
-    Positive values mean the trait pulled the user towards this career.
-    Negative values pushed them away.
-    """
-    shap_vals = {}
-    for trait in user_riasec:
-        # Distance calculation serving as feature importance proxy
-        shap_vals[trait] = round(1 - abs(user_riasec[trait] - career_riasec[trait]), 3)
-    return shap_vals
+def get_chroma_collection():
+    db_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "db_storage"))
+    client = chromadb.PersistentClient(path=db_path)
+    return client.get_or_create_collection(name='careers', metadata={"hnsw:space": "cosine"})
 
-def run_ollama_explanation(career_name, rvi, shap_vals):
-    """Calls local Llama-3 container via Ollama to generate a natural language story."""
-    prompt = f"""You are CareerNavigator AI. The user matched with {career_name}.
-Their Automation Risk (RVI) for this job is {rvi} (0.0=Safe, 1.0=Automated soon).
-Here are the SHAP feature importances showing *why* they matched this job based on their personality (Higher = Stronger Match):
-{json.dumps(shap_vals, indent=2)}
+class MatchRequest(BaseModel):
+    riasec_scores: Dict[str, float]
+    narrative: str
+    north_star: Optional[str] = None
 
-Write a concise, encouraging 3-sentence explanation of why they are a good fit and what their automation risk means."""
-
-    # Default fallback explanation
-    explanation = "Based on your mathematical profile, this career is a strong match for your traits. "
-    explanation += "Your resilient skills position you well against future automation."
-    
+@app.get("/health")
+def health_check():
     try:
-        # Hit local Ollama API
-        response = requests.post("http://127.0.0.1:11434/api/generate", json={
-            "model": "llama3:8b",
-            "prompt": prompt,
-            "stream": False
-        }, timeout=8) # 8 second timeout so Node.js doesn't hang forever
-        
-        if response.status_code == 200:
-            explanation = response.json().get("response", explanation)
+        col = get_chroma_collection()
+        count = col.count()
     except Exception:
-        # Silent fallback if Ollama isn't running or times out
-        pass
-        
-    return explanation.strip()
+        count = 0
+    return {"status": "ok", "model": "llama3:8b", "mode": "local", "chromadb_count": count}
 
-def main():
+NEXT_STEP_MAP = {
+    'I': {"course_title": "Introduction to Data Science - NPTEL", "url": "https://nptel.ac.in/courses/106/106/106106138/", "impact_pct": 8.5},
+    'R': {"course_title": "Engineering Mechanics - MIT OCW", "url": "https://ocw.mit.edu/courses/2-001-mechanics-materials-i-fall-2006/", "impact_pct": 7.2},
+    'A': {"course_title": "Graphic Design Fundamentals - Coursera Free Audit", "url": "https://www.coursera.org/learn/fundamentals-of-graphic-design", "impact_pct": 6.8},
+    'S': {"course_title": "Foundations of Teaching - Coursera Free Audit", "url": "https://www.coursera.org/learn/teaching", "impact_pct": 6.5},
+    'E': {"course_title": "Entrepreneurship and Innovation - NPTEL", "url": "https://nptel.ac.in/courses/110/106/110106143/", "impact_pct": 7.0},
+    'C': {"course_title": "Financial Accounting - MIT OCW", "url": "https://ocw.mit.edu/courses/15-511-financial-accounting-summer-2004/", "impact_pct": 6.2}
+}
+
+@app.post("/match")
+def match_careers(request: MatchRequest):
     try:
-        # Read JSON from stdin
-        input_data = sys.stdin.read()
-        if not input_data:
-            raise ValueError("No input provided")
+        col = get_chroma_collection()
+        
+        # STEP 1 — RIASEC Normalization:
+        riasec_scores = request.riasec_scores
+        total = sum(riasec_scores.values())
+        if total == 0: total = 1
+        normalized = {k: round(v / total, 4) for k, v in riasec_scores.items()}
+        riasec_vector = np.array([normalized[k] for k in ['R','I','A','S','E','C']])
+        
+        top_trait = max(normalized, key=normalized.get)
+        top_trait_score = normalized[top_trait]
+
+        # STEP 2 — Narrative Embedding:
+        narrative = request.narrative if request.narrative else "I want a stable career."
+        narrative_embedding = model.encode(narrative)
+        
+        # STEP 3 — Identity Fusion:
+        identity_vector = np.concatenate([narrative_embedding, riasec_vector])
+
+        # STEP 4 — ChromaDB Query:
+        results = col.query(query_embeddings=[narrative_embedding.tolist()], n_results=5)
+        
+        if not results['ids'] or not results['ids'][0]:
+            return {"top_careers": [], "next_step": {}}
             
-        payload = json.loads(input_data)
-        raw_riasec = payload.get("riasec", {"R":0, "I":0, "A":0, "S":0, "E":0, "C":0})
-        narrative = payload.get("narrative", "")
-        
-        # 1. Trait Normalization
-        norm_user_riasec = normalize_riasec(raw_riasec)
-        
-        # 2. Setup Vector Search
-        db_path = os.path.join(os.path.dirname(__file__), "db_storage")
-        client = chromadb.PersistentClient(path=db_path)
-        collection = client.get_collection(name="careers")
-        
-        if narrative and len(narrative) > 5:
-            # Full semantic search across narrative
-            model = SentenceTransformer("all-MiniLM-L6-v2")
-            emb = model.encode([narrative])[0].tolist()
-            results = collection.query(
-                query_embeddings=[emb],
-                n_results=1
-            )
-        else:
-            # Fallback if no narrative is provided - just query an empty concept or default to first
-            results = collection.get(limit=1)
-            # Formatting default result to look like a query result
-            results = {
-                "ids": [results["ids"]],
-                "metadatas": [results["metadatas"]],
-                "documents": [results["documents"]]
-            }
+        top_careers = []
+        best_riasec_code = "I"
+
+        for i in range(len(results['ids'][0])):
+            onet_code = results['ids'][0][i]
+            dist = results['distances'][0][i] if 'distances' in results and results['distances'] else 0.5
+            score = 1.0 - dist
+            meta = results['metadatas'][0][i]
+            title = meta.get('title', 'Unknown Career')
+            riasec_code = meta.get('riasec_code', 'I').strip().upper()
+            if not riasec_code: riasec_code = 'I'
+            if i == 0: best_riasec_code = riasec_code[0]
             
-        if not results["ids"][0]:
-            raise ValueError("No careers found in Vector DB")
+            # STEP 5 — RVI from metadata:
+            rvi = float(meta.get('rvi_score', 0.5))
+
+            # STEP 6 — SHAP Proxy:
+            stored_data = col.get(ids=[onet_code], include=['embeddings'])
+            if stored_data and stored_data['embeddings']:
+                stored_embedding = np.array(stored_data['embeddings'][0])
+                contribution = np.abs(narrative_embedding * stored_embedding[:384])
+                top3_indices = np.argsort(contribution)[-3:][::-1]
+                total_contrib = contribution[top3_indices].sum()
+                if total_contrib == 0: total_contrib = 1.0
+                shap_values = {f"feature_{j+1}": round(float(contribution[idx] / total_contrib), 3) for j, idx in enumerate(top3_indices)}
+            else:
+                shap_values = {"feature_1": 0.333, "feature_2": 0.333, "feature_3": 0.334}
+
+            # STEP 7 — LLM Justification via Ollama:
+            prompt = f"You are a career counselor. The student's top RIASEC trait is {top_trait} ({top_trait_score:.0%}). They match '{title}' with {score:.0%} semantic alignment and an RVI (future-proof score) of {rvi:.2f}/1.0. Write one encouraging paragraph (max 60 words) explaining why this career fits and what specific skill to learn next."
             
-        # Top match metadata
-        best_match_id = results["ids"][0][0]
-        best_match_meta = results["metadatas"][0][0]
-        career_name = best_match_meta.get("name", "Unknown Career")
+            try:
+                resp = requests.post("http://localhost:11434/api/generate", json={"model": "llama3:8b", "prompt": prompt, "stream": False}, timeout=10)
+                if resp.status_code == 200:
+                    justification = resp.json().get("response", "").strip()
+                else:
+                    raise Exception("Ollama error")
+            except Exception:
+                # STEP 8 — Ollama fallback:
+                justification = f"Your {top_trait} orientation ({top_trait_score:.0%}) aligns well with {title}. This role has an automation resilience score of {rvi:.2f}/1.0. Focus on building your core technical skills to close the remaining gap."
+
+            top_careers.append({
+                "title": title,
+                "score": float(score),
+                "rvi": float(rvi),
+                "shap_values": shap_values,
+                "justification": justification
+            })
+            
+        top_careers.sort(key=lambda x: x["score"], reverse=True)
         
-        career_riasec = {
-            "R": float(best_match_meta.get("R", 0)),
-            "I": float(best_match_meta.get("I", 0)),
-            "A": float(best_match_meta.get("A", 0)),
-            "S": float(best_match_meta.get("S", 0)),
-            "E": float(best_match_meta.get("E", 0)),
-            "C": float(best_match_meta.get("C", 0))
+        # STEP 9 — Next Step lookup
+        next_step = NEXT_STEP_MAP.get(best_riasec_code[0], NEXT_STEP_MAP['I'])
+            
+        return {
+            "top_careers": top_careers,
+            "next_step": next_step
         }
-        
-        # 3. Compute Metrics
-        rvi_score = calculate_rvi(career_riasec)
-        shap_values = generate_shap_values(norm_user_riasec, career_riasec)
-        
-        # 4. Deep Learning Natural Language Output
-        explanation = run_ollama_explanation(career_name, rvi_score, shap_values)
-        
-        # Success Output
-        output = {
-            "status": "success",
-            "match": career_name,
-            "careerId": best_match_id,
-            "normalized_user_scores": norm_user_riasec,
-            "rvi_automation_risk": rvi_score,
-            "eva_shap_importances": shap_values,
-            "ai_explanation": explanation
-        }
-        
-        print(json.dumps(output))
-        
     except Exception as e:
-        err_output = {
-            "status": "error",
-            "message": str(e)
-        }
-        print(json.dumps(err_output))
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":
-    main()
+    import uvicorn
+    # Using relative imports and setup assuming it's run inside ai-service
+    uvicorn.run(app, host="0.0.0.0", port=8000)

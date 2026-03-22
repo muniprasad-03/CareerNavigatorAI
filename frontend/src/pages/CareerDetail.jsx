@@ -1,134 +1,188 @@
+// File: frontend/src/pages/CareerDetail.jsx | Purpose: Render SHAP details and charts
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import api, { saveCareer, unsaveCareer } from '../api';
+import { Chart as ChartJS, RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend, CategoryScale, LinearScale, BarElement } from 'chart.js';
+import { Radar, Bar } from 'react-chartjs-2';
+
+ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend, CategoryScale, LinearScale, BarElement);
 
 const CareerDetail = () => {
   const { id } = useParams();
   const [career, setCareer] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [nextStep, setNextStep] = useState(null);
+  const [riasecScores, setRiasecScores] = useState(null);
+  const [isSaved, setIsSaved] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchCareer = async () => {
-      try {
-        const res = await api.get(`/careers/${id}`);
-        setCareer(res.data);
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
+    const resultsStr = localStorage.getItem('career_results');
+    const riasecStr = localStorage.getItem('riasec_scores');
+    
+    if (resultsStr) {
+      const data = JSON.parse(resultsStr);
+      const careerIndex = parseInt(id);
+      if (data.top_careers && data.top_careers[careerIndex]) {
+        const selected = data.top_careers[careerIndex];
+        setCareer(selected);
+        setNextStep(data.next_step);
+        
+        const favs = JSON.parse(localStorage.getItem('favourites') || "[]");
+        if (favs.some(f => f.title === selected.title)) {
+          setIsSaved(true);
+        }
       }
-    };
-    fetchCareer();
+    }
+    
+    if (riasecStr) {
+       const raw = JSON.parse(riasecStr);
+       const total = Object.values(raw).reduce((a,b) => a+b, 0) || 1;
+       const normalized = {
+          R: (raw.R / total) * 100,
+          I: (raw.I / total) * 100,
+          A: (raw.A / total) * 100,
+          S: (raw.S / total) * 100,
+          E: (raw.E / total) * 100,
+          C: (raw.C / total) * 100,
+       };
+       setRiasecScores(normalized);
+    }
   }, [id]);
 
-  if (loading) return <div className="text-center mt-20">Loading Career Context...</div>;
-  if (!career) return <div className="text-center mt-20">Career not found</div>;
+  const handleSave = () => {
+    const favs = JSON.parse(localStorage.getItem('favourites') || "[]");
+    if (!isSaved) {
+       favs.push(career);
+       setIsSaved(true);
+       localStorage.setItem('favourites', JSON.stringify(favs));
+    }
+  };
+
+  if (!career || !riasecScores) {
+     return (
+        <div className="text-center mt-20">
+            <h2 className="text-2xl font-bold mb-4">Career not found</h2>
+            <button onClick={() => navigate(-1)} className="text-blue-600 hover:underline">← Back to Results</button>
+        </div>
+     );
+  }
+
+  // PRD Item 4: Radar Chart
+  const radarData = {
+    labels: ['Realistic', 'Investigative', 'Artistic', 'Social', 'Enterprising', 'Conventional'],
+    datasets: [{
+      label: 'RIASEC Profile (Normalized)',
+      data: [riasecScores.R, riasecScores.I, riasecScores.A, riasecScores.S, riasecScores.E, riasecScores.C],
+      backgroundColor: 'rgba(59, 130, 246, 0.2)', // filled light blue
+      borderColor: 'rgba(59, 130, 246, 1)',
+      borderWidth: 2,
+    }]
+  };
+
+  const radarOptions = {
+    scales: { r: { min: 0, max: 100 } }
+  };
+
+  // PRD Item 5: SHAP Attribution
+  const shapLabels = Object.keys(career.shap_values || {});
+  const shapDataValues = Object.values(career.shap_values || {}).map(v => v * 100);
+
+  const barData = {
+    labels: shapLabels,
+    datasets: [{
+      label: 'Feature Contribution (%)',
+      data: shapDataValues,
+      backgroundColor: 'rgba(59, 130, 246, 0.8)', // blue bars
+      borderColor: 'rgba(59, 130, 246, 1)',
+      borderWidth: 1,
+    }]
+  };
+
+  const barOptions = {
+    indexAxis: 'y',
+    responsive: true,
+    scales: { x: { beginAtZero: true, max: 100 } }
+  };
+
+  // PRD Item 3: RVI Section Colors
+  let rviColor = 'text-red-500';
+  if (career.rvi >= 0.7) rviColor = 'text-green-500';
+  else if (career.rvi >= 0.4) rviColor = 'text-yellow-500';
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
-       <button onClick={() => navigate(-1)} className="text-blue-600 hover:underline mb-4 inline-block">&larr; Back to Recommendations</button>
+    <div className="max-w-5xl mx-auto space-y-8 pb-12">
+       {/* 1. Back button */}
+       <button onClick={() => navigate(-1)} className="text-blue-600 hover:underline mb-2 font-bold inline-block">← Back to Results</button>
+       
        <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100">
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-2">{career.name}</h2>
-          <p className="text-xl text-gray-600 mb-8">{career.description}</p>
-          
-          <div className="flex justify-end mb-6">
-            <button
-              onClick={async () => {
-                try {
-                  if (career.isSaved) {
-                    await unsaveCareer(career._id);
-                    setCareer({...career, isSaved: false});
-                  } else {
-                    await saveCareer(career._id);
-                    setCareer({...career, isSaved: true});
-                  }
-                } catch (err) {
-                  console.error(err);
-                }
-              }}
-              className={`px-6 py-2 rounded-full font-bold transition ${
-                career.isSaved 
-                  ? 'bg-gray-200 text-gray-700 hover:bg-gray-300' 
-                  : 'bg-blue-600 text-white hover:bg-blue-700 shadow-md'
-              }`}
-            >
-              {career.isSaved ? '✓ Saved' : 'Save Career Path'}
-            </button>
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 mb-8">
-            <div className="bg-blue-50 p-6 rounded-lg text-center border-t-4 border-blue-500">
-               <h4 className="text-gray-500 font-medium uppercase tracking-wider text-sm mb-1">Demand Score</h4>
-               <p className="text-4xl font-bold text-gray-800">{career.demandScore}/100</p>
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 border-b pb-6">
+            <div>
+              {/* 2. Career title + alignment score */}
+              <h1 className="text-4xl font-extrabold text-gray-900 mb-2">{career.title}</h1>
+              <p className="text-2xl text-blue-600 font-bold">{(career.score * 100).toFixed(0)}% Match</p>
             </div>
-            <div className="bg-red-50 p-6 rounded-lg text-center border-t-4 border-red-500">
-               <h4 className="text-gray-500 font-medium uppercase tracking-wider text-sm mb-1">Automation Risk</h4>
-               <p className="text-4xl font-bold text-gray-800">{career.automationRisk}%</p>
+            
+            {/* 8. Save to Favourites button */}
+            <div className="mt-4 md:mt-0">
+               <button
+                 onClick={handleSave}
+                 disabled={isSaved}
+                 className={`px-6 py-3 rounded-md font-bold transition shadow-sm ${
+                   isSaved 
+                     ? 'bg-gray-100 text-gray-500 cursor-not-allowed' 
+                     : 'bg-blue-600 text-white hover:bg-blue-700'
+                 }`}
+               >
+                 {isSaved ? 'Saved!' : 'Save to Favourites'}
+               </button>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div>
-               <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-gray-800">Core Skills</h3>
-               <ul className="space-y-2">
-                 {career.skills.map((skill, i) => (
-                   <li key={i} className="flex items-center text-gray-700">
-                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                      {skill}
-                   </li>
-                 ))}
-               </ul>
+          <div className="grid md:grid-cols-2 gap-10">
+            {/* 3. RVI section */}
+            <div className="flex flex-col justify-center items-center p-8 bg-gray-50 rounded-xl border border-gray-100">
+               <h3 className="font-bold text-gray-500 uppercase tracking-widest text-sm mb-2">Resilience Score</h3>
+               <p className={`text-6xl font-black mb-4 ${rviColor}`}>{career.rvi.toFixed(2)}</p>
+               <p className="text-center text-sm text-gray-500 max-w-xs">How future-proof this career is against AI automation (1.0 = fully resilient)</p>
             </div>
+
+            {/* 7. Next Step box */}
+            {nextStep && (
+            <div className="flex flex-col justify-center bg-green-50 p-8 rounded-xl border border-green-200">
+               <h3 className="text-green-800 font-bold uppercase tracking-wider text-sm mb-3">Your Next Step</h3>
+               <p className="text-xl font-bold text-gray-900 leading-tight mb-2">{nextStep.course_title}</p>
+               <p className="text-sm text-gray-700 mb-6 font-medium">Expected alignment improvement: <span className="text-green-700 font-bold">+{nextStep.impact_pct}%</span></p>
+               <a href={nextStep.url} target="_blank" rel="noopener noreferrer" className="inline-block text-center bg-green-600 text-white font-bold py-3 px-6 rounded hover:bg-green-700 transition shadow">
+                 Start Learning &rarr;
+               </a>
+            </div>
+            )}
+          </div>
+
+          {/* 6. Alignment Justification */}
+          <div className="mt-10">
+            <h3 className="text-xl font-bold mb-4 text-gray-800">AI Justification</h3>
+            <blockquote className="bg-gray-50 border-l-4 border-blue-500 p-6 rounded-r text-gray-700 text-lg italic tracking-wide">
+               {career.justification}
+            </blockquote>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 mt-12 pt-10 border-t border-gray-100">
+            {/* 4. RIASEC Radar Chart */}
             <div>
-               <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-gray-800">Vocational GPS Roadmap</h3>
-               <div className="relative border-l-2 border-blue-200 ml-4 space-y-8 pb-4">
-                  {career.roadmap && career.roadmap.length > 0 ? (
-                    career.roadmap.map((step, i) => (
-                      <div key={i} className="relative pl-8">
-                         <div className="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-blue-600 border-4 border-white"></div>
-                         <div className="flex justify-between items-start mb-1">
-                            <h4 className="font-bold text-lg text-blue-700">{step.step}</h4>
-                            <span className="text-xs font-bold uppercase tracking-widest bg-blue-100 text-blue-600 px-2 py-0.5 rounded">{step.duration}</span>
-                         </div>
-                          <p className="text-gray-600 text-sm mb-3">{step.description}</p>
-                          {step.links && step.links.length > 0 && (
-                            <div className="mt-2 space-y-2">
-                              <p className="text-[10px] uppercase font-bold text-gray-400 tracking-wider">Useful Resources:</p>
-                              <div className="flex flex-wrap gap-2">
-                                {step.links.map((link, li) => (
-                                  <a 
-                                    key={li} 
-                                    href={link.url} 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center px-3 py-1 bg-white border border-blue-200 rounded text-xs font-medium text-blue-600 hover:bg-blue-50 transition"
-                                  >
-                                    {link.type === 'youtube' ? '📺 ' : link.type === 'course' ? '🎓 ' : '🔗 '}
-                                    {link.title}
-                                  </a>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                      </div>
-                    ))
-                  ) : (
-                    <p className="text-gray-500 italic ml-4">Trajectory data pending AI optimization...</p>
-                  )}
+               <h3 className="text-xl font-bold mb-6 text-gray-800 text-center">Psychometric Profile Map</h3>
+               <div className="max-w-[320px] mx-auto">
+                 <Radar data={radarData} options={radarOptions} />
                </div>
             </div>
+            {/* 5. SHAP Attribution Chart */}
             <div>
-               <h3 className="text-2xl font-bold border-b pb-2 mb-4 text-gray-800">Suggested Training Projects</h3>
-               <ul className="space-y-4">
-                 {career.projects.map((proj, i) => (
-                   <li key={i} className="bg-gray-50 p-3 rounded-md border border-gray-100 font-medium text-gray-800">
-                     {proj}
-                   </li>
-                 ))}
-               </ul>
+               <h3 className="text-xl font-bold mb-6 text-gray-800 text-center">SHAP Alignment Factors</h3>
+               <div className="mt-8">
+                 <Bar data={barData} options={barOptions} />
+               </div>
             </div>
           </div>
+
        </div>
     </div>
   );
