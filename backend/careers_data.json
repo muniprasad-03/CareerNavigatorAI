@@ -1,12 +1,12 @@
 [
   {
     "riasecProfile": {
-      "R": 0.6,
-      "I": 0.9,
-      "A": 0.2,
-      "S": 0.1,
-      "E": 0.3,
-      "C": 0.4
+      "R": 0.3,
+      "I": 0.8,
+      "A": 0.4,
+      "S": 0.2,
+      "E": 0.4,
+      "C": 0.7
     },
     "_id": "69b1be848a150cb215ac409c",
     "name": "Software Engineer",
@@ -28,8 +28,16 @@
         "duration": "3 Months",
         "description": "Master Data Structures, Algorithms, and a primary language like Python or Java.",
         "links": [
-          { "title": "CS50: Introduction to Computer Science", "url": "https://www.edx.org/course/introduction-computer-science-harvardx-cs50x", "type": "course" },
-          { "title": "Data Structures and Algorithms Specialization", "url": "https://www.coursera.org/specializations/data-structures-algorithms", "type": "course" }
+          {
+            "title": "CS50: Introduction to Computer Science",
+            "url": "https://www.edx.org/course/introduction-computer-science-harvardx-cs50x",
+            "type": "course"
+          },
+          {
+            "title": "Data Structures and Algorithms Specialization",
+            "url": "https://www.coursera.org/specializations/data-structures-algorithms",
+            "type": "course"
+          }
         ],
         "_id": "69b1be848a150cb215ac409d"
       },
@@ -38,8 +46,16 @@
         "duration": "6 Months",
         "description": "Learn React/Next.js for frontend or Node.js/Go for backend development.",
         "links": [
-          { "title": "React Official Documentation", "url": "https://react.dev/", "type": "other" },
-          { "title": "Full Stack Open", "url": "https://fullstackopen.com/en/", "type": "course" }
+          {
+            "title": "React Official Documentation",
+            "url": "https://react.dev/",
+            "type": "other"
+          },
+          {
+            "title": "Full Stack Open",
+            "url": "https://fullstackopen.com/en/",
+            "type": "course"
+          }
         ],
         "_id": "69b1be848a150cb215ac409e"
       },
@@ -48,8 +64,16 @@
         "duration": "1 Year",
         "description": "Study Distributed Systems, Cloud (AWS/Azure), and DevOps CI/CD pipelines.",
         "links": [
-          { "title": "System Design Primer", "url": "https://github.com/donnemartin/system-design-primer", "type": "other" },
-          { "title": "AWS Certified Solutions Architect", "url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/", "type": "course" }
+          {
+            "title": "System Design Primer",
+            "url": "https://github.com/donnemartin/system-design-primer",
+            "type": "other"
+          },
+          {
+            "title": "AWS Certified Solutions Architect",
+            "url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/",
+            "type": "course"
+          }
         ],
         "_id": "69b1be848a150cb215ac409f"
       }
@@ -58,12 +82,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.3,
+      "R": 0.2,
       "I": 0.9,
-      "A": 0.2,
+      "A": 0.3,
       "S": 0.1,
       "E": 0.4,
-      "C": 0.7
+      "C": 0.8
     },
     "_id": "69b1be848a150cb215ac40a0",
     "name": "Data Scientist",
@@ -85,8 +109,16 @@
         "duration": "4 Months",
         "description": "Deep dive into Linear Algebra, Calculus, and Probability Theory.",
         "links": [
-          { "title": "Mathematics for Machine Learning", "url": "https://www.coursera.org/specializations/mathematics-machine-learning", "type": "course" },
-          { "title": "Khan Academy Statistics", "url": "https://www.khanacademy.org/math/statistics-probability", "type": "other" }
+          {
+            "title": "Mathematics for Machine Learning",
+            "url": "https://www.coursera.org/specializations/mathematics-machine-learning",
+            "type": "course"
+          },
+          {
+            "title": "Khan Academy Statistics",
+            "url": "https://www.khanacademy.org/math/statistics-probability",
+            "type": "other"
+          }
         ],
         "_id": "69b1be848a150cb215ac40a1"
       },
@@ -95,8 +127,16 @@
         "duration": "8 Months",
         "description": "Implement Scikit-learn, TensorFlow, and Pytorch on real-world datasets.",
         "links": [
-          { "title": "Machine Learning by Andrew Ng", "url": "https://www.coursera.org/learn/machine-learning", "type": "course" },
-          { "title": "Fast.ai: Practical Deep Learning for Coders", "url": "https://www.fast.ai/", "type": "course" }
+          {
+            "title": "Machine Learning by Andrew Ng",
+            "url": "https://www.coursera.org/learn/machine-learning",
+            "type": "course"
+          },
+          {
+            "title": "Fast.ai: Practical Deep Learning for Coders",
+            "url": "https://www.fast.ai/",
+            "type": "course"
+          }
         ],
         "_id": "69b1be848a150cb215ac40a2"
       },
@@ -105,8 +145,16 @@
         "duration": "1 Year",
         "description": "Learn Spark, Hadoop, and Model Deployment (MLOps).",
         "links": [
-          { "title": "Made With ML", "url": "https://madewithml.com/", "type": "course" },
-          { "title": "MLOps Specialization", "url": "https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops", "type": "course" }
+          {
+            "title": "Made With ML",
+            "url": "https://madewithml.com/",
+            "type": "course"
+          },
+          {
+            "title": "MLOps Specialization",
+            "url": "https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops",
+            "type": "course"
+          }
         ],
         "_id": "69b1be848a150cb215ac40a3"
       }
@@ -115,8 +163,8 @@
   },
   {
     "riasecProfile": {
-      "R": 0.2,
-      "I": 0.3,
+      "R": 0.1,
+      "I": 0.2,
       "A": 0.9,
       "S": 0.4,
       "E": 0.5,
@@ -160,12 +208,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.4,
-      "I": 0.6,
+      "R": 0.2,
+      "I": 0.4,
       "A": 0.1,
       "S": 0.9,
       "E": 0.2,
-      "C": 0.5
+      "C": 0.6
     },
     "_id": "69b1be848a150cb215ac40a8",
     "name": "Registered Nurse",
@@ -208,9 +256,9 @@
       "R": 0.1,
       "I": 0.2,
       "A": 0.3,
-      "S": 0.8,
+      "S": 0.5,
       "E": 0.9,
-      "C": 0.6
+      "C": 0.4
     },
     "_id": "69b1be848a150cb215ac40ac",
     "name": "Sales Manager",
@@ -250,11 +298,11 @@
   },
   {
     "riasecProfile": {
-      "R": 0.2,
-      "I": 0.5,
+      "R": 0.1,
+      "I": 0.3,
       "A": 0.1,
-      "S": 0.3,
-      "E": 0.6,
+      "S": 0.1,
+      "E": 0.4,
       "C": 0.9
     },
     "_id": "69b1be848a150cb215ac40b0",
@@ -295,12 +343,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.18053454358847765,
-      "I": 0.2878384347288798,
-      "A": 0.6935254140163843,
-      "S": 0.9543350992791212,
-      "E": 0.051547799709979136,
-      "C": 0.279817670058373
+      "R": 0.9,
+      "I": 0.7,
+      "A": 0.3,
+      "S": 0.1,
+      "E": 0.2,
+      "C": 0.4
     },
     "_id": "69b1be848a150cb215ac40b4",
     "name": "Mechanical Engineer",
@@ -340,12 +388,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.9175729306702461,
-      "I": 0.9350400278830202,
-      "A": 0.6078731558033476,
-      "S": 0.26164307734947245,
-      "E": 0.2486852290151108,
-      "C": 0.6020709161888418
+      "R": 0.8,
+      "I": 0.7,
+      "A": 0.3,
+      "S": 0.2,
+      "E": 0.4,
+      "C": 0.5
     },
     "_id": "69b1be848a150cb215ac40b8",
     "name": "Civil Engineer",
@@ -385,12 +433,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.5041897467349561,
-      "I": 0.7438377912038693,
-      "A": 0.5176411550392991,
-      "S": 0.8645729905633505,
-      "E": 0.2762464431156981,
-      "C": 0.2621648129748425
+      "R": 0.2,
+      "I": 0.9,
+      "A": 0.2,
+      "S": 0.4,
+      "E": 0.1,
+      "C": 0.5
     },
     "_id": "69b1be848a150cb215ac40bc",
     "name": "Biologist",
@@ -475,12 +523,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.7788176709799329,
-      "I": 0.6571206251965773,
-      "A": 0.6122358980989908,
-      "S": 0.774015062793643,
-      "E": 0.8359032344947677,
-      "C": 0.6049552601876385
+      "R": 0.1,
+      "I": 0.2,
+      "A": 0.4,
+      "S": 0.9,
+      "E": 0.5,
+      "C": 0.3
     },
     "_id": "69b1be848a150cb215ac40c4",
     "name": "Teacher",
@@ -700,12 +748,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.777720160103096,
-      "I": 0.8192691391231959,
-      "A": 0.08991110401863411,
-      "S": 0.04265151002007561,
-      "E": 0.43967216339851023,
-      "C": 0.37880576896026485
+      "R": 0.1,
+      "I": 0.1,
+      "A": 0.3,
+      "S": 0.6,
+      "E": 0.9,
+      "C": 0.3
     },
     "_id": "69b1be848a150cb215ac40d8",
     "name": "Real Estate Agent",
@@ -925,12 +973,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.535099550383209,
-      "I": 0.00432021623481138,
-      "A": 0.13835569217265342,
-      "S": 0.6088747650778724,
-      "E": 0.6897500791371434,
-      "C": 0.1661850222286525
+      "R": 0.2,
+      "I": 0.1,
+      "A": 1.0,
+      "S": 0.3,
+      "E": 0.4,
+      "C": 0.1
     },
     "_id": "69b1be848a150cb215ac40ec",
     "name": "Musician",
@@ -1150,12 +1198,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.4646492967730166,
-      "I": 0.5771816585438305,
-      "A": 0.11873006603134362,
-      "S": 0.5652077333471102,
-      "E": 0.23653670509804592,
-      "C": 0.5640168471143255
+      "R": 0.7,
+      "I": 0.1,
+      "A": 0.8,
+      "S": 0.2,
+      "E": 0.4,
+      "C": 0.1
     },
     "_id": "69b1be848a150cb215ac4100",
     "name": "Chef",
@@ -1285,12 +1333,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.5930699641520077,
-      "I": 0.49586173301005054,
-      "A": 0.8384814558183495,
-      "S": 0.5680619744719412,
-      "E": 0.002406511149610324,
-      "C": 0.4090996949448563
+      "R": 0.1,
+      "I": 0.4,
+      "A": 0.1,
+      "S": 0.2,
+      "E": 0.3,
+      "C": 0.9
     },
     "_id": "69b1be848a150cb215ac410c",
     "name": "Paralegal",
@@ -1420,12 +1468,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.6630515530261007,
-      "I": 0.040663626733511093,
-      "A": 0.3327928739107151,
-      "S": 0.8044119564380665,
-      "E": 0.29655454457437136,
-      "C": 0.8997652979165403
+      "R": 0.6,
+      "I": 0.3,
+      "A": 0.1,
+      "S": 0.8,
+      "E": 0.4,
+      "C": 0.2
     },
     "_id": "69b1be848a150cb215ac4118",
     "name": "Paramedic",
@@ -1690,12 +1738,12 @@
   },
   {
     "riasecProfile": {
-      "R": 0.34875166785710576,
-      "I": 0.6329416918170435,
-      "A": 0.514204200788541,
-      "S": 0.048578402851768065,
-      "E": 0.3900092747546934,
-      "C": 0.21037531230091278
+      "R": 0.1,
+      "I": 0.9,
+      "A": 0.3,
+      "S": 0.8,
+      "E": 0.4,
+      "C": 0.2
     },
     "_id": "69b1be848a150cb215ac4130",
     "name": "Psychiatrist",

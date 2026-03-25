@@ -37,11 +37,11 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/assessment" element={<Assessment />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/recommendations" element={<Recommendations />} />
-            <Route path="/favourites" element={<Favourites />} />
-            <Route path="/career/:id" element={<CareerDetail />} />
+            <Route path="/assessment" element={localStorage.getItem('token') ? <Assessment /> : <Navigate to="/login" />} />
+            <Route path="/dashboard" element={localStorage.getItem('token') ? <Dashboard /> : <Navigate to="/login" />} />
+            <Route path="/recommendations" element={localStorage.getItem('token') ? <Recommendations /> : <Navigate to="/login" />} />
+            <Route path="/favourites" element={localStorage.getItem('token') ? <Favourites /> : <Navigate to="/login" />} />
+            <Route path="/career/:id" element={localStorage.getItem('token') ? <CareerDetail /> : <Navigate to="/login" />} />
           </Routes>
         </main>
       </div>

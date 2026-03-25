@@ -68,6 +68,19 @@ const Assessment = () => {
     </div>
   );
 
+  if (questions.length === 0) return (
+    <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md border border-red-100 mt-20 text-center">
+      <h2 className="text-2xl font-bold text-red-600 mb-4">No Questions Available</h2>
+      <p className="text-gray-600 mb-6">We couldn't load the assessment questions. This might be because the database is not seeded.</p>
+      <button 
+        onClick={() => window.location.reload()} 
+        className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition"
+      >
+        Retry Loading
+      </button>
+    </div>
+  );
+
   return (
     <div className="max-w-3xl mx-auto bg-white p-8 rounded-xl shadow-md border border-gray-100 mb-12">
       <h2 className="text-3xl font-bold mb-2 text-gray-800">Vocational Profiler</h2>

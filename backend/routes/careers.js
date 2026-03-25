@@ -69,9 +69,9 @@ router.post('/match', auth, async (req, res) => {
             const recommendations = [{
                 careerId: bestCareer._id,
                 careerDetails: bestCareer,
-                matchScore: 92,
-                rvi_automation_risk: 12,
-                explanation: `[SHOWCASE MODE] Based on your high ${topCode} orientation, the EVA framework identifies ${bestCareer.name} as your optimal trajectory. This path leverages your analytical profile and provides a future-proof skill set.`
+                score: 0.92,
+                rvi: 0.88,
+                justification: `[SHOWCASE MODE] Based on your high ${topCode} orientation, the EVA framework identifies ${bestCareer.name} as your optimal trajectory. This path leverages your analytical profile and provides a future-proof skill set.`
             }];
 
             // Attempt to save to DB (don't block if it fails)
@@ -91,7 +91,7 @@ router.post('/match', auth, async (req, res) => {
 
             // Simulate a slight delay for realistic feel
             await new Promise(resolve => setTimeout(resolve, 2000));
-            return res.json(recommendations);
+            return res.json({ top_careers: recommendations });
         } catch (demoErr) {
             console.error("CRITICAL DEMO MODE FAILURE:", demoErr);
             return res.status(500).json({ msg: 'Demo Matcher Failed', details: demoErr.message });
@@ -108,19 +108,25 @@ router.post('/match', auth, async (req, res) => {
         north_star: req.body.north_star || ""
     };
 
-    const aiEndpointUrl = process.env.AI_ENDPOINT_URL || 'http://localhost:8000/match';
+    const aiEndpointUrl = 'http://127.0.0.1:8001/match';
+    // Force IPv4 in axios to avoid Windows resolution issues
+    const axios = require('axios');
+    const http = require('http');
+    const agent = new http.Agent({ family: 4 }); 
     console.log('[careers] Forwarding to AI endpoint:', aiEndpointUrl);
 
-    const axios = require('axios');
     let response;
     try {
-        response = await axios.post(aiEndpointUrl, payload, { timeout: 15000 });
+        response = await axios.post(aiEndpointUrl, payload, { 
+            timeout: 30000,
+            httpAgent: agent
+        });
     } catch (apiErr) {
         if (apiErr.code === 'ECONNABORTED' || apiErr.code === 'ECONNREFUSED' || !apiErr.response) {
-             return res.status(503).json({ 
-                 error: "AI service unavailable", 
-                 detail: "Could not reach the inference engine. Is it running?" 
-             });
+            console.error('[careers] AI endpoint blocked/timed out:', apiErr.message);
+            return res.status(503).json({ 
+                 error: "AI service is currently unavailable or warming up. Please try again."
+            });
         } else if (apiErr.response && apiErr.response.status === 500) {
              return res.status(502).json({
                  error: "AI service internal error",
@@ -158,6 +164,7 @@ router.post('/match', auth, async (req, res) => {
         console.warn('Could not save recommendation to DB:', saveErr.message);
     }
 
+    console.log('[careers] Successfully received AI match response.');
     return res.json(aiResult);
 
   } catch (err) {

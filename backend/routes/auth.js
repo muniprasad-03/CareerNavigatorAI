@@ -12,6 +12,7 @@ router.post('/register', async (req, res) => {
   // ---------------------------------------------------------------------------
   // SHOWCASE BYPASS: Allow any registration in production/demo
   // ---------------------------------------------------------------------------
+  console.log("[auth] Register attempt for:", email, "Demo Mode:", process.env.AI_DEMO_MODE);
   if (process.env.VERCEL || process.env.AI_DEMO_MODE === 'true') {
      console.log("SHOWCASE BYPASS: Auto-registering user", email);
      // Deterministic 24-character hex ID from email
@@ -52,6 +53,7 @@ router.post('/login', async (req, res) => {
   // ---------------------------------------------------------------------------
   // SHOWCASE BYPASS: Allow any login in production/demo
   // ---------------------------------------------------------------------------
+  console.log("[auth] Login attempt for:", email, "Demo Mode:", process.env.AI_DEMO_MODE);
   if (process.env.VERCEL || process.env.AI_DEMO_MODE === 'true') {
      console.log("SHOWCASE BYPASS: Auto-logging in user", email);
      const crypto = require('crypto');

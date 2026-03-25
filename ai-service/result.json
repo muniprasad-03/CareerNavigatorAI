@@ -1,0 +1,64 @@
+{
+  "top_careers": [
+    {
+      "title": "Computer Systems Analyst",
+      "score": 0.7842364609241486,
+      "rvi": 0.8,
+      "shap_values": {
+        "feature_1": 0.384,
+        "feature_2": 0.314,
+        "feature_3": 0.302
+      },
+      "justification": "Your I orientation (38%) aligns well with Computer Systems Analyst. This role has an automation resilience score of 0.80/1.0. Focus on building your core technical skills to close the remaining gap."
+    },
+    {
+      "title": "Software Developer",
+      "score": 0.7654276192188263,
+      "rvi": 0.8,
+      "shap_values": {
+        "feature_1": 0.417,
+        "feature_2": 0.311,
+        "feature_3": 0.272
+      },
+      "justification": "Your I orientation (38%) aligns well with Software Developer. This role has an automation resilience score of 0.80/1.0. Focus on building your core technical skills to close the remaining gap."
+    },
+    {
+      "title": "Computer and Information Research Scientist",
+      "score": 0.7600946426391602,
+      "rvi": 0.8,
+      "shap_values": {
+        "feature_1": 0.401,
+        "feature_2": 0.3,
+        "feature_3": 0.3
+      },
+      "justification": "Your I orientation (38%) aligns well with Computer and Information Research Scientist. This role has an automation resilience score of 0.80/1.0. Focus on building your core technical skills to close the remaining gap."
+    },
+    {
+      "title": "Biological Scientist",
+      "score": 0.7108406275510788,
+      "rvi": 0.8,
+      "shap_values": {
+        "feature_1": 0.368,
+        "feature_2": 0.339,
+        "feature_3": 0.293
+      },
+      "justification": "Your I orientation (38%) aligns well with Biological Scientist. This role has an automation resilience score of 0.80/1.0. Focus on building your core technical skills to close the remaining gap."
+    },
+    {
+      "title": "Mechanical Engineer",
+      "score": 0.7105767279863358,
+      "rvi": 0.2,
+      "shap_values": {
+        "feature_1": 0.372,
+        "feature_2": 0.322,
+        "feature_3": 0.306
+      },
+      "justification": "Your I orientation (38%) aligns well with Mechanical Engineer. This role has an automation resilience score of 0.20/1.0. Focus on building your core technical skills to close the remaining gap."
+    }
+  ],
+  "next_step": {
+    "course_title": "Introduction to Data Science - NPTEL",
+    "url": "https://nptel.ac.in/courses/106/106/106106138/",
+    "impact_pct": 8.5
+  }
+}
